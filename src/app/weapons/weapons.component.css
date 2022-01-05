@@ -1,0 +1,7 @@
+.inventory{
+    width:100%;
+    background-color: #4e4e4ed6;
+    display: flex;
+    overflow: auto;
+    height:25vh;
+}
