@@ -1,0 +1,7 @@
+.choices{
+    display: flex;
+    background-color: #d3d3d3d6;
+    height: 75vh;
+    flex-direction: column;
+    overflow: auto;
+}

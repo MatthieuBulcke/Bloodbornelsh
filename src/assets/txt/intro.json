@@ -1,0 +1,191 @@
+{
+    "story": [
+        {
+            "id": 0,
+            "text": "Vous êtes un étranger. Vous avez fait un long voyage pour arriver à Yarnham, la ville qui abrite l'Eglise du remède. Que vous soyez là pour voler les secrets de la ville ou pour implorer son aide importe peu, vous devez trouver le pâle sang. Avant de vous laisser descendre, le cochet se tourne vers vous et vous tends trois valises \"Laquelle était la votre déjà ?\"",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId": "Place_de_Yarnham.weapon_choice"
+        },
+        {
+            "id": 1,
+            "text": "Votre calèche vous a déposé pas loin d'une place où une procession semble prendre place. Plusieurs personnes marchent en file, ils portent des torches.",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId": [2,3]
+        },
+        {
+            "id": 2,
+            "text": "Je manque d'informations sur la ville et je vais me renseigner.",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId":4
+        },
+        {
+            "id": 3,
+            "text": "Observer les habitants",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId": 5
+        },
+        {
+            "id": 4,
+            "text": "En vous approchant pour demander votre chemin vous vous rendez compte que les locaux ont un problème, leurs membres sont élongués et leur pilosité est anormalement développée. Ils n'ont plus que la silhouette d'un être humain. Leur attention est à présent tourné sur vous. \"Une bête ! Abbatez le!\" Leurs intentions ne sont clairement pas amicale. *combat*",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId": [14]
+        },
+        {
+            "id": 5,
+            "text": "Vous vous approchez doucement mais surement, vous faites en sorte de ne pas attirer l'attention sur vous. Vous vous rendez compte que les locaux ont un problème, leurs membres sont élongués et leur pilosité est anormalement développée.Ils n'ont plus que la silhouette d'un être humain.",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId": [6,7]
+        },
+        {
+            "id": 6,
+            "text": "Ce sont des abominations et ils doivent être purgés ! *combat*",
+            "time":1,
+            "NextId": 8
+        },
+        {
+            "id": 7,
+            "text": "Celà semble plus prudent de les contourner.",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId":9
+        },
+        {
+            "id": 8,
+            "text": "Vous avez réussi à mettre en déroute les habitants qui vous avez attaqué et le chemin est à présent dégagé. Devant vous, le faubourg de la cathédrale. En vous rendant là-bas quelque-chose cloche, le long du chemin sont disposés des bûchers de loup aux traits étrangement humanoïdes. Que se passe-t-il donc dans cette ville ?",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId": [13],
+            "Fight": 5
+        },
+        {
+            "id":9,
+            "text":"En contournant les habitants vous découvrez un accès aux égouts, celui-ci vous permettrez surement de rejoindre la cathédrale en toute sécurité ou alors vous pouvez tenter de chercher une autre entrée par la forêt",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId":[10,11,12]
+        },
+        {
+            "id":10,
+            "text":"Les egouts semblent plus simple, autant rester sous la ville.",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId":20
+        },
+        {
+            "id":11,
+            "text":"Un autre accès semble mieux, passons par la forêt",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId":""
+        },
+        {
+            "id":12,
+            "text":"Au diable la prudence, je vais me battre !",
+            "zone": "Place de Yarnham",
+            "time":1,
+            "NextId":8
+        },
+        {
+            "id":13,
+            "text":"Continue",
+            "zone":"Place de Yarnham",
+            "time":1,
+            "NextId":15
+        },
+        {
+            "id":14,
+            "text":"Continue",
+            "zone":"Place de Yarnham",
+            "time":1,
+            "NextId":8
+        },
+        {
+            "id":15,
+            "text":"Les rues autour de la cathédrale sont vides, pas une âme qui vive. Les habitants sont cloitrés chez eux, queleques fenêtres sont éclairées mais essayé de parler avec eux n'est pas fructueux. Les citadins préfèrent repousser les étrangers entre deux quintes de toux que de leur parler. Après quelques minutes d'errance vous apercevez au loin une silhouette, une figure encapuchonnée qui porte un masque de corbeau et des plumes en guise de cape. Elle est adossée contre un mur, avec le masque difficile de dire si elle vous a remarquée ou pas. Une voix féminine vient de sa direction \"Besoin d'aide jeune chasseur ? J'ai des équipements si tu as besoin.\" ",
+            "zone":"Faubourg de la cathédrale",
+            "time":2,
+            "NextId":[16,17,18]
+        },
+        {
+            "id":16,
+            "text":"Enfin quelqu'un de sensé dans cette ville, il serait judicieux de lui demander des informations",
+            "zone":"Faubourg de la cathédrale",
+            "time":2,
+            "NextId":19
+        },
+        {
+            "id":17,
+            "text":"Un peu d'équipements ne ferait pas de mal et puis voir ses marchandises ne mange pas de pain",
+            "zone":"Faubourg de la cathédrale",
+            "time":2,
+            "NextId":19
+        },
+        {
+            "id":18,
+            "text":"C'est sûrement un piège, depuis que je suis arrivé cette ville est dangereuse, je vais attaquer avant qu'elle ne m'attaque",
+            "zone":"Faubourg de la cathédrale",
+            "time":2,
+            "NextId":19
+        },
+        {
+            "id":19,
+            "text":"Ok",
+            "zone":"Faubourg de la cathédrale",
+            "time":2,
+            "NextId":[24],
+            "Fight":"eileen"
+        },
+        {
+            "id":20,
+            "text":"Vous êtes embourbés dans de l'eau sale, finalement les égouts étaient peut-être pas une si bonne idée.... La cathédrale est plus loin, vous empruntez un couloir et tombez nez à nez face à ... un rat, il est énorme et agressif.",
+            "zone":"egout",
+            "time":1,
+            "NextId":[21]
+        },
+        {
+            "id":21,
+            "text":"Continue",
+            "zone":"egout",
+            "time":1,
+            "NextId":22
+        },
+        {
+            "id":22,
+            "text":"Bravo t'as tué le rat. Mais maintenant y a un gros cochon.",
+            "zone":"egout",
+            "time":1,
+            "NextId":[23],
+            "Fight":3
+        },
+        {
+            "id":23,
+            "text":"OH NO",
+            "zone":"egout",
+            "time":1,
+            "NextId":24
+        },
+        {
+            "id":24,
+            "text":"T'as géré fréro, go le faubourg",
+            "zone":"egout",
+            "time":1,
+            "NextId":[13],
+            "Fight":2
+        },
+        {
+            "id":25,
+            "text":"Vous êtes enfin à porter de la cathédrale, à vous les secrets de l'Eglise du remède, le pale sang est surement là-bas",
+            "zone":"Faubourg de la cathédrale",
+            "time":2,
+            "NextId":[13],
+            "Fight":2
+        }
+        
+    ]
+}

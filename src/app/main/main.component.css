@@ -1,0 +1,14 @@
+.game{
+    display: flex;
+    opacity:.9;
+    background-image: url(../../assets/img/Outback-1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: grey;
+    height: 75vh;
+}
+.game img{
+    float:left;
+    width:100%;
+}

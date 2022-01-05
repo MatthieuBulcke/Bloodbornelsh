@@ -1,0 +1,8 @@
+.equip{
+    display:flex;
+    z-index: 6;
+    flex-wrap:wrap;
+    background-color: #d3d3d3d6;
+    justify-content:center;
+    height: 75vh;
+}

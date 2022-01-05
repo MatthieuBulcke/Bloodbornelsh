@@ -1,1 +1,237 @@
 /* You can add global styles to this file, and also import other style files */
+::-webkit-scrollbar{
+    margin:0;
+    height:16px;
+    width:16px;
+    background:#d4d4d4
+}
+::-webkit-scrollbar-thumb{
+    background:grey;
+    -webkit-border-radius:1ex;
+    -webkit-box-shadow:0 1px 2px rgba(0,0,0,.75)
+}
+::-webkit-scrollbar-corner{
+    background:#000
+}
+body{
+    user-select:none;
+    margin: 0;
+    font-family: Estonia,sans-serif;
+    background-image:url("./assets/img/Bloodburne.jpeg");
+    background-size: cover;
+}
+h1{
+    text-align:center;
+}
+h3{
+    text-align:center;
+    width:100%;
+    margin:0;
+}
+.main{
+    display:flex;
+    height:70vh;
+    flex-wrap: wrap;
+    border-top:2px solid grey;
+}
+.icon{
+    width:2em;
+    border-radius:.5em;
+}
+nav{
+    background: rgb(98 116 180 / 90%);
+}
+nav a{
+font-size:2em;
+font-family: Estonia,sans-serif;
+color:black;
+text-decoration:none;
+}
+nav ul{
+display:flex;
+justify-content:space-around;
+margin: 0;
+}
+nav li{
+list-style:none;
+}
+/*Progress Bar*/
+progress{
+margin: 0.5em 0;
+width: 80%;
+padding:.1em;
+background-color: grey;
+z-index:1;
+display: inline-block;
+border-radius: 2em;
+}
+::-webkit-progress-value{
+background-color: goldenrod;
+border-radius: 2em;
+}
+#life::-webkit-progress-value{
+background-color: crimson;
+}
+#stam::-webkit-progress-value{
+background-color: yellowGreen;
+}
+figure{
+text-align:center;
+}
+figcaption{
+font-size:2em;
+}
+.choices p{
+width:50%;
+margin: 1em auto;
+text-align:center;
+background:lightblue;
+border-radius:2em;
+font-size:2em;
+cursor:pointer;
+padding: 0.5em;
+border:2px solid black;
+transition:.5s border;
+}
+.choices p:hover{
+color:royalblue;
+border:2px solid royalblue;
+}
+.container{
+    width: 100%;
+    margin:1em;
+    border-radius:2em;
+    background-color:#0000007a;
+}
+.game p{
+font-size:2em;
+letter-spacing:.1em;
+padding:1em;
+color:white;
+}
+
+.monsterFrame,.shop,.chooseWeapon{
+position: fixed;
+padding:6em 2.5em;
+top: 0;
+margin: 0;
+left: 0;
+bottom: 0;
+z-index: 5;
+justify-content: center;
+width: 100%;
+background: #00000087;
+}
+.monsterFrame img,.shop img,.chooseWeapon img{
+float:none;
+border-radius:2em;
+border:2px solid grey;
+width: 40%;
+margin: auto;
+height: -webkit-fill-available;
+}
+.monsterFrame figcaption{
+color:white;
+}
+.monsterFrame button{
+margin:0 4em;
+padding:1em;
+border-radius:2em;
+background:#00000087;
+color:white;
+}
+.articles{
+background: grey;
+width: 25%;
+border-radius: 2em 0 0 2em;
+top: 7em;
+right:6%;
+position: absolute;
+display: flex;
+flex-wrap: wrap;
+height: 70%;
+overflow: auto;
+}
+.articles .article{
+width:50%;
+margin:0;
+}
+.articles button{
+padding:1em;
+border-radius:2em;
+background:#00000087;
+color:white;
+margin:1em 0;
+}
+.article img{
+width:70%;
+}
+.exit{
+width: 100%;
+}
+.chooseWeapon{
+color:white;
+display: flex;
+flex-wrap: wrap;
+z-index:7;
+}
+.chooseWeapon .weapon{
+width:35%;
+margin:0 auto;
+}
+.weapon figcaption{
+color:white;
+}
+.chooseWeapon h3{
+font-size:3em;
+}
+/******INVENTAIRE********/
+.inventory{
+width:100%;
+background-color: #4e4e4ed6;
+border-radius: 0 0 2em 2em;
+display: flex;
+overflow: auto;
+}
+.weaponImg{
+width:10em;
+border-radius:2em;
+border:2px solid lightgrey;
+transition:border 1s;
+cursor:pointer;
+}
+.weaponImg:hover{
+border:2px solid royalblue;
+}
+.active{
+border:2px solid royalblue;
+}
+
+.empty{
+display:none;
+}
+/*BACKGROUNDS*/
+.firstBack{
+background:url(./assets/img/Egouts.jpeg);
+background-size: cover;
+}
+.secondBack{
+background:url(./assets/img/Faubourg.jpeg);
+}
+.thirdBack{
+background:url(./assets/img/Place.jpg);
+background-position: center;
+}
+/*ANGULAR*/
+section{
+    display: flex;
+}
+app-stats{
+    width:25%;
+}
+app-options{
+    width:20%;
+}
+app-main{ 
+    width:55%;
+}

@@ -1,0 +1,73 @@
+{
+    "monstres": [{
+            "nom": "Rat",
+            "id": 0,
+            "pv": 20,
+            "atk": 5,
+            "def": 0,
+            "faiblesse": 1,
+            "loot": 10,
+            "img": "./assets/img/monstres/Rat.png"
+        },
+        {
+            "nom": "Citadins",
+            "id": 1,
+            "pv": 50,
+            "atk": 10,
+            "def": 5,
+            "faiblesse": 1,
+            "loot": 50,
+            "img": "./assets/img/monstres/hunterMob.png"
+        },
+        {
+            "nom": "Cochon Mangeur D'hommes",
+            "id": 2,
+            "pv": 100,
+            "atk": 10,
+            "def": 5,
+            "faiblesse": 1,
+            "loot": 100,
+            "img": "./assets/img/monstres/ManeaterBoar.png"
+        },
+        {
+            "nom": "Rat",
+            "id": 3,
+            "pv": 20,
+            "atk": 5,
+            "def": 0,
+            "faiblesse": 1,
+            "loot": 10,
+            "img": "./assets/img/monstres/Rat.png"
+        },
+        {
+            "nom": "Parasite",
+            "id": 4,
+            "pv": 20,
+            "atk": 5,
+            "def": 0,
+            "faiblesse": 1,
+            "loot": 10,
+            "img": "./assets/img/monstres/Parasite.png"
+        },
+        {
+            "nom": "Snakes",
+            "id": 5,
+            "pv": 20,
+            "atk": 5,
+            "def": 0,
+            "faiblesse": 1,
+            "loot": 10,
+            "img": "./assets/img/monstres/Snakes.png"
+        },
+        {
+            "nom": "Rat",
+            "id": 6,
+            "pv": 20,
+            "atk": 5,
+            "def": 0,
+            "faiblesse": 1,
+            "loot": 10,
+            "img": "./assets/img/monstres/Rat.png"
+        }
+    ]
+}
