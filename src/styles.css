@@ -24,9 +24,12 @@ h1{
     text-align:center;
 }
 h3{
-    text-align:center;
-    width:100%;
-    margin:0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    top: 1.5em;
+    z-index: 2;
 }
 .main{
     display:flex;
@@ -186,13 +189,6 @@ color:white;
 font-size:3em;
 }
 /******INVENTAIRE********/
-.inventory{
-width:100%;
-background-color: #4e4e4ed6;
-border-radius: 0 0 2em 2em;
-display: flex;
-overflow: auto;
-}
 .weaponImg{
 width:10em;
 border-radius:2em;
@@ -225,6 +221,7 @@ background-position: center;
 /*ANGULAR*/
 section{
     display: flex;
+    flex-wrap: wrap;
 }
 app-stats{
     width:25%;
@@ -234,4 +231,7 @@ app-options{
 }
 app-main{ 
     width:55%;
+}
+app-weapons{
+    width:100%;
 }
