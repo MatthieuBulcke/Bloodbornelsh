@@ -1,23 +1,23 @@
 <article class="equip">
-    <h3 class="values">100/100</h3>
-    <progress id="life" class="life" max=100 value=100></progress>
-    <h3 class="values">100/100</h3>
-    <progress id="stam" class="stam" max=100 value=100></progress>
+    <h3 class="values">{{pv}}/100</h3>
+    <progress id="life" class="life" max=100 value={{pv}}></progress>
+    <h3 class="values">{{stamina}}/100</h3>
+    <progress id="stam" class="stam" max=100 value={{stamina}}></progress>
     <figure>
         <img class="icon" src="../assets/img/Sun.png">
         <figcaption class="time">Temps</figcaption>
     </figure>
     <figure>
         <img class="icon" src="../assets/img/Echo.png">
-        <figcaption class="echos">Echos</figcaption>
+        <figcaption class="echos">Echos {{echos}}</figcaption>
     </figure>
     <figure>
         <img class="icon" src="../assets/img/Heal.png">
-        <figcaption class="heal">Fioles</figcaption>
+        <figcaption class="heal">Fioles {{fioles}}</figcaption>
     </figure>
     <figure>
         <img class="icon" src="../assets/img/Ammo.png">
-        <figcaption class="bullets">Balles</figcaption>
+        <figcaption class="bullets">Balles {{balles}}</figcaption>
     </figure>
     <figure>
         <img class="icon" src="">
