@@ -7,6 +7,8 @@ import { StatsComponent } from './stats/stats.component';
 import { OptionsComponent } from './options/options.component';
 import { MainComponent } from './main/main.component';
 import { WeaponsComponent } from './weapons/weapons.component';
+import { ShopComponent } from './shop/shop.component';
+import { FightComponent } from './fight/fight.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { WeaponsComponent } from './weapons/weapons.component';
     StatsComponent,
     OptionsComponent,
     MainComponent,
-    WeaponsComponent
+    WeaponsComponent,
+    ShopComponent,
+    FightComponent
   ],
   imports: [
     BrowserModule,

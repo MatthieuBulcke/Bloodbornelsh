@@ -6,8 +6,7 @@
     background:#d4d4d4
 }
 ::-webkit-scrollbar-thumb{
-    background:grey;
-    -webkit-border-radius:1ex;
+    background:#433544;
     -webkit-box-shadow:0 1px 2px rgba(0,0,0,.75)
 }
 ::-webkit-scrollbar-corner{
@@ -62,15 +61,20 @@ list-style:none;
 progress{
 margin: 0.5em 0;
 width: 80%;
+height: 1.2em;
 padding:.1em;
-background-color: grey;
+background-color: #4a4a4a;
 z-index:1;
 display: inline-block;
-border-radius: 2em;
+border-radius: 2em; 
 }
 ::-webkit-progress-value{
 background-color: goldenrod;
 border-radius: 2em;
+}
+::-webkit-progress-bar {
+    border: 0;
+    border-radius: 20px;
 }
 #life::-webkit-progress-value{
 background-color: crimson;
@@ -78,27 +82,31 @@ background-color: crimson;
 #stam::-webkit-progress-value{
 background-color: yellowGreen;
 }
-figure{
-text-align:center;
+figure .article{
+    text-align: center;
+}
+figure > img{
+    border-radius: 2em;
 }
 figcaption{
 font-size:2em;
 }
 .choices p{
 width:50%;
-margin: 1em auto;
+color:white;
+margin: .5em auto;
 text-align:center;
-background:lightblue;
+background:#503a217a;
 border-radius:2em;
 font-size:2em;
 cursor:pointer;
 padding: 0.5em;
 border:2px solid black;
-transition:.5s border;
+transition:.5s border,.5s color;
 }
 .choices p:hover{
-color:royalblue;
-border:2px solid royalblue;
+    color:goldenrod;
+    border:2px solid goldenrod;
 }
 .container{
     width: 100%;
@@ -115,23 +123,19 @@ color:white;
 
 .monsterFrame,.shop,.chooseWeapon{
 position: fixed;
-padding:6em 2.5em;
+padding-top:.5em;
 top: 0;
 margin: 0;
 left: 0;
 bottom: 0;
 z-index: 5;
-justify-content: center;
 width: 100%;
 background: #00000087;
 }
 .monsterFrame img,.shop img,.chooseWeapon img{
-float:none;
-border-radius:2em;
-border:2px solid grey;
-width: 40%;
-margin: auto;
-height: -webkit-fill-available;
+    border: 2px solid grey;
+    width: 35%;
+    margin: auto;
 }
 .monsterFrame figcaption{
 color:white;
@@ -144,20 +148,21 @@ background:#00000087;
 color:white;
 }
 .articles{
-background: grey;
-width: 25%;
-border-radius: 2em 0 0 2em;
-top: 7em;
-right:6%;
-position: absolute;
-display: flex;
-flex-wrap: wrap;
-height: 70%;
-overflow: auto;
+    background: grey;
+    width: 45%;
+    border-radius: 2em 0 0 2em;
+    top: 1.5em;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    height: 90%;
+    overflow: auto;
 }
 .articles .article{
-width:50%;
-margin:0;
+    width: 47.8%;
+    margin: 0.3em;
+    text-align: center;
 }
 .articles button{
 padding:1em;
@@ -168,6 +173,7 @@ margin:1em 0;
 }
 .article img{
 width:70%;
+border-radius: 2em;
 }
 .exit{
 width: 100%;
@@ -234,4 +240,7 @@ app-main{
 }
 app-weapons{
     width:100%;
+}
+app-shop{
+    margin: 0;
 }
