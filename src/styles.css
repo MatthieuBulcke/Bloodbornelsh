@@ -180,6 +180,7 @@ width: 100%;
 }
 .chooseWeapon{
 color:white;
+text-align: center;
 display: flex;
 flex-wrap: wrap;
 z-index:7;

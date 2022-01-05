@@ -1,6 +1,7 @@
 .equip{
     display:flex;
     z-index: 6;
+    text-align: center;
     flex-wrap:wrap;
     background-color: #d3d3d3d6;
     justify-content:center;

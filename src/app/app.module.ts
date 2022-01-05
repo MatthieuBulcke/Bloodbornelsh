@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { WeaponsComponent } from './weapons/weapons.component';
 import { ShopComponent } from './shop/shop.component';
 import { FightComponent } from './fight/fight.component';
+import { StartComponent } from './start/start.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FightComponent } from './fight/fight.component';
     MainComponent,
     WeaponsComponent,
     ShopComponent,
-    FightComponent
+    FightComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
