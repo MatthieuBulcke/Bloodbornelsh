@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Weapon } from '../weapon';
 
 @Component({
   selector: 'app-weapons',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeaponsComponent implements OnInit {
 
+  weapons : Weapon[]=[];
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Option } from '../option';
 
 @Component({
   selector: 'app-options',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./options.component.css']
 })
 export class OptionsComponent implements OnInit {
+
+  options : Option[]=[];
 
   constructor() { }
 

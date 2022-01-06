@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Monster } from '../monster';
 
 @Component({
   selector: 'app-fight',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FightComponent implements OnInit {
 
+  monster! : Monster;
   constructor() { }
 
   ngOnInit(): void {
