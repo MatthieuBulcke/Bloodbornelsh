@@ -13,10 +13,11 @@ export class WeaponsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.addweapon(this.saw_cleaver);
+    this.addWeapon(this.saw_cleaver);
+    console.log(this.weapons);
   }
   
-  addweapon(weapon : Weapon): void{
+  addWeapon(weapon : Weapon): void{
     this.weapons.push(weapon);
     console.log(`ajout de ${weapon.name}`);
   }
