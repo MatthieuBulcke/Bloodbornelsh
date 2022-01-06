@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ChangeTextService } from '../change-text.service';
 import { Option } from '../option';
 
 @Component({
@@ -9,10 +10,15 @@ import { Option } from '../option';
 export class OptionsComponent implements OnInit {
 
   options : Option[]=[];
+@Output() sendId = new EventEmitter(); 
 
-  constructor() { }
+  constructor(private changeText:ChangeTextService) { }
 
   ngOnInit(): void {
+  }
+
+  continue(id:number):void{
+    this.sendId.emit(id);
   }
 
 }

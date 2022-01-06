@@ -1,6 +1,6 @@
 export interface Option {
     id: number;
     text: string;
-    nextId: string;
+    nextId: number;
     fight: boolean;
 }

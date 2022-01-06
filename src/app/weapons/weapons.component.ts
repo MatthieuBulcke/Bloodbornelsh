@@ -9,9 +9,16 @@ import { Weapon } from '../weapon';
 export class WeaponsComponent implements OnInit {
 
   weapons : Weapon[]=[];
+  saw_cleaver : Weapon = {id:1,name:"saw cleaver",atk:5,dmg_type:1,price:10,imgPath:"../assets/img/weapons/saw_cleaver.jpg"};
   constructor() { }
 
   ngOnInit(): void {
+    this.addweapon(this.saw_cleaver);
+  }
+  
+  addweapon(weapon : Weapon): void{
+    this.weapons.push(weapon);
+    console.log(`ajout de ${weapon.name}`);
   }
 
 }
