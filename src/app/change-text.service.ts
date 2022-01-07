@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Option } from './option';
 import { Weapon } from './weapon';
 import { Monster } from './monster';
+import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -23,8 +24,17 @@ export class ChangeTextService {
   monsters :Monster[] = [];
   constructor(private http: HttpClient) { }
 
-  loadItems(){
+  loadWeapons(){
     let element = this.http.get('https://localhost:7276/api/Weapons',httpOptions);
     return element;
   }
+  getOption(id: number){
+    let element = this.http.get('https://localhost:7276/api/Options/${id}', httpOptions);
+    return element;
+  }
+
+  getOptions(ids:number[]){
+    
+  }
 }
+

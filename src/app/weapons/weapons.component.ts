@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class WeaponsComponent implements OnInit {
 
   inventory! : Weapon[];
+  weapons!: Weapon[];
   
 
   constructor(private service:ChangeTextService) { }
@@ -20,8 +21,8 @@ export class WeaponsComponent implements OnInit {
     console.log(this.inventory);
 
     
-    this.service.loadItems()
-      .subscribe( (inventory:any) => this.inventory = inventory);
+    this.service.loadWeapons()
+      .subscribe( (weapons:any) => this.weapons = weapons);
     console.log(this.inventory);
   }
   
