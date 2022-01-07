@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
   constructor(private changeText:ChangeTextService) { }
 
   ngOnInit(): void {
+    this.option={id:1,text:"ça fonctionne trop drole xptdr nik le lorem ipsum en fait",fight:false,nextId:2};
   }
 
   getOption(id:number): void{

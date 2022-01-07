@@ -15,6 +15,7 @@ export class OptionsComponent implements OnInit {
   constructor(private changeText:ChangeTextService) { }
 
   ngOnInit(): void {
+  
   }
 
   continue(id:number):void{
