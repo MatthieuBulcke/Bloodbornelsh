@@ -1,1 +1,6 @@
-<article class="inventory"></article>
+<article class="inventory">
+    <figure *ngFor="let weapon of inventory">
+        <img src="{{weapon.imgPath}}"/>
+        <figcaption>{{weapon.name}}</figcaption>
+    </figure>
+</article>

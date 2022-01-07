@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Weapon } from '../weapon';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
 
+  weapons!: Weapon[];
   constructor() { }
 
   ngOnInit(): void {
   }
+  initShop(){
 
+  }
 }
