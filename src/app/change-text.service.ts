@@ -24,7 +24,7 @@ export class ChangeTextService {
   constructor(private http: HttpClient) { }
 
   loadItems():Observable<Weapon[]>{
-    let element:Observable<Weapon[]> = this.http.get('https://localhost:7276/api/Weapons',httpOptions);
+    let element : Observable<Weapon[]> = this.http.get('https://localhost:7276/api/Weapons',httpOptions);
     return element;
   }
 }
