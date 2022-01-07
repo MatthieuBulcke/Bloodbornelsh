@@ -1,8 +1,8 @@
 export interface Weapon{
-    id: number;
+    idWeapon: number;
     name : string;
     atk : number;
-    dmg_type : number;
+    dmgtype : number;
     price : number;
-    imgPath : string;
+    imgSrc : string;
 }
