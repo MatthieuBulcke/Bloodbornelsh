@@ -10,6 +10,7 @@ import { WeaponsComponent } from './weapons/weapons.component';
 import { ShopComponent } from './shop/shop.component';
 import { FightComponent } from './fight/fight.component';
 import { StartComponent } from './start/start.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { StartComponent } from './start/start.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
