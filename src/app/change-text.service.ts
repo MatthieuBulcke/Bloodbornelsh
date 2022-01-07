@@ -18,13 +18,13 @@ const httpOptions = {
 })
 export class ChangeTextService {
 
-  options! :Observable<Option[]>; 
+  options! :Option[]; 
   weapons :Weapon[] = [];
   monsters :Monster[] = [];
   constructor(private http: HttpClient) { }
 
-  loadItems():Observable<Weapon[]>{
-    let element:Observable<Weapon[]> = this.http.get('https://localhost:7276/api/Weapons',httpOptions);
+  loadItems(){
+    let element = this.http.get('https://localhost:7276/api/Weapons',httpOptions);
     return element;
   }
 }

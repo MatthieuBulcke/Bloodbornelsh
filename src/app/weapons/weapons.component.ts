@@ -10,23 +10,23 @@ import { Observable } from 'rxjs';
 })
 export class WeaponsComponent implements OnInit {
 
-  inventory! : Observable<Weapon[]>;
-  saw_cleaver : Weapon = {id:1,name:"saw cleaver",atk:5,dmg_type:1,price:10,imgPath:"../assets/img/weapons/saw_cleaver.jpg"};
+  inventory! :Weapon[];
+  //saw_cleaver : Weapon = {id:1,name:"saw cleaver",atk:5,dmg_type:1,price:10,imgPath:"../assets/img/weapons/saw_cleaver.jpg"};
 
   constructor(private service:ChangeTextService) { }
 
   ngOnInit(): void {
-    this.addWeapon(this.saw_cleaver);
+    //this.addWeapon(this.saw_cleaver);
     console.log(this.inventory);
 
     
     this.service.loadItems()
-      .subscribe( inventory => this.inventory = inventory);
+      .subscribe( (inventory:any) => this.inventory = inventory);
     console.log(this.inventory);
   }
   
   addWeapon(weapon : Weapon): void{
-    this.inventory.push(weapon);
+    //this.inventory.push(weapon);
     console.log(`ajout de ${weapon.name}`);
   }
 }
