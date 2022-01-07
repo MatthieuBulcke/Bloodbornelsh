@@ -6,19 +6,15 @@ import { Weapon } from './weapon';
 import { Monster } from './monster';
 import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 
-const httpOptions = {
-  headers: new HttpHeaders(
-    {
-      'Content-Type': 'application/json',
-    }
-  )
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class ChangeTextService {
-
+  headers= new HttpHeaders(
+    {
+      'Content-Type': 'application/json',
+    }
+  )
   options! :Option[]; 
   weapons :Weapon[] = [];
   monsters :Monster[] = [];
