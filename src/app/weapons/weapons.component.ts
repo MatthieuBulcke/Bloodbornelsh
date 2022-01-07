@@ -17,17 +17,14 @@ export class WeaponsComponent implements OnInit {
   constructor(private service:ChangeTextService) { }
 
   ngOnInit(): void {
-    //this.addWeapon(this.saw_cleaver);
-    console.log(this.inventory);
 
-    
     this.service.loadWeapons()
-      .subscribe( (weapons:any) => this.weapons = weapons);
+      .subscribe( (weapons:any) => this.inventory = weapons);
     console.log(this.inventory);
   }
   
   addWeapon(weapon : Weapon): void{
-    //this.inventory.push(weapon);
+    this.inventory.push(weapon);
     console.log(`ajout de ${weapon.name}`);
   }
 }
