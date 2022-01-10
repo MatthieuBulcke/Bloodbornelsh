@@ -21,11 +21,11 @@ export class ChangeTextService {
   constructor(private http: HttpClient) { }
 
   loadWeapons(){
-    let element = this.http.get('https://45.81.84.151:52234/api/Weapons');
+    let element = this.http.get('https://localhost:7276/api/Weapons');
     return element;
   }
   getOption(id: number){
-    let element = this.http.get('https://45.81.84.151:52234/api/Options/${id}');
+    let element = this.http.get('https://localhost:7276/api/Options/${id}');
     return element;
   }
 
