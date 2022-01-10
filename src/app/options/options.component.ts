@@ -10,7 +10,10 @@ import { Option } from '../option';
 export class OptionsComponent implements OnInit {
 
   main_Text!: Option;
-  choices!: Option[];
+  choice1!: Option;
+  choice2!: Option;
+  choice3!: Option;
+  choice4!: Option;
   ids!: string[];
 
   constructor(private changeText: ChangeTextService) { }
@@ -31,7 +34,6 @@ export class OptionsComponent implements OnInit {
       .subscribe((main) => {
         this.main_Text = main
         this.ids = main.options.split(',');
-        console.log(this.ids);
         this.initOptions(this.ids);
       });
   }
@@ -39,14 +41,38 @@ export class OptionsComponent implements OnInit {
   initOptions(idText: string[]): void {
     console.log("ALLO ?!");
     let i: number;
-    for (i = 0; i < idText.length; i++) {
+    if (idText[0]) {
       console.log("t'es là mamène ?");
-      this.changeText.getOption(idText[i])
+      this.changeText.getOption(idText[0])
         .subscribe((choice) => {
-          this.choices[i] = choice;
           console.log(choice);
+          this.choice1 = choice;
         });
-    }
+      }
+      if (idText[1]) {
+        console.log("t'es là mamène ?");
+        this.changeText.getOption(idText[1])
+          .subscribe((choice) => {
+            console.log(choice);
+            this.choice2 = choice;
+          });
+        }
+        if (idText[2]) {
+          console.log("t'es là mamène ?");
+          this.changeText.getOption(idText[2])
+            .subscribe((choice) => {
+              console.log(choice);
+              this.choice3 = choice;
+            });
+          }
+          if (idText[3]) {
+            console.log("t'es là mamène ?");
+            this.changeText.getOption(idText[3])
+              .subscribe((choice) => {
+                console.log(choice);
+                this.choice3 = choice;
+              });
+          }
 
+    }
   }
-}

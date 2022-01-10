@@ -1,6 +1,6 @@
 <article class="choices">
-    <h3>{{main_Text.options}}</h3>
-    <div *ngIf ="ids != undefined">
-    <p class="opt" *ngFor="let option of choices" (click)="continue(option.options)">{{option.text}}</p>
-    </div>
+    <p class="opt" *ngIf="choice1" (click)="continue(choice1.options)">{{choice1.text}}</p>
+    <p class="opt" *ngIf="choice2" (click)="continue(choice2.options)">{{choice2.text}}</p>
+    <p class="opt" *ngIf="choice3" (click)="continue(choice3.options)">{{choice3.text}}</p>
+    <p class="opt" *ngIf="choice4" (click)="continue(choice4.options)">{{choice4.text}}</p>
 </article>
