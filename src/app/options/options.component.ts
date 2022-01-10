@@ -29,6 +29,7 @@ export class OptionsComponent implements OnInit {
     this.choice3=null;
     this.choice4=null;
 
+    this.changeText.changeId(id);
     this.getMainText(id);
   }
 
