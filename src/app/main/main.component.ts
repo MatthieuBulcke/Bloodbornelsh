@@ -17,7 +17,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOption("2");
-    console.log(this.option.id);
   }
 
   getOption(id:string): void{

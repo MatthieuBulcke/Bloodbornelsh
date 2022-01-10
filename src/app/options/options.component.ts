@@ -10,10 +10,10 @@ import { Option } from '../option';
 export class OptionsComponent implements OnInit {
 
   main_Text!: Option;
-  choice1!: Option;
-  choice2!: Option;
-  choice3!: Option;
-  choice4!: Option;
+  choice1!: Option |null;
+  choice2!: Option|null;
+  choice3!: Option|null;
+  choice4!: Option|null;
   ids!: string[];
 
   constructor(private changeText: ChangeTextService) { }
@@ -24,9 +24,12 @@ export class OptionsComponent implements OnInit {
 
 
   continue(id: string): void {
-    this.changeText.getOption(id)
-      .subscribe(main => this.main_Text = main);
+    this.choice1=null;
+    this.choice2=null;
+    this.choice3=null;
+    this.choice4=null;
 
+    this.getMainText(id);
   }
 
   getMainText(id: string) {
@@ -39,10 +42,8 @@ export class OptionsComponent implements OnInit {
   }
 
   initOptions(idText: string[]): void {
-    console.log("ALLO ?!");
     let i: number;
     if (idText[0]) {
-      console.log("t'es là mamène ?");
       this.changeText.getOption(idText[0])
         .subscribe((choice) => {
           console.log(choice);
@@ -50,7 +51,6 @@ export class OptionsComponent implements OnInit {
         });
       }
       if (idText[1]) {
-        console.log("t'es là mamène ?");
         this.changeText.getOption(idText[1])
           .subscribe((choice) => {
             console.log(choice);
@@ -58,7 +58,6 @@ export class OptionsComponent implements OnInit {
           });
         }
         if (idText[2]) {
-          console.log("t'es là mamène ?");
           this.changeText.getOption(idText[2])
             .subscribe((choice) => {
               console.log(choice);
@@ -66,7 +65,6 @@ export class OptionsComponent implements OnInit {
             });
           }
           if (idText[3]) {
-            console.log("t'es là mamène ?");
             this.changeText.getOption(idText[3])
               .subscribe((choice) => {
                 console.log(choice);
