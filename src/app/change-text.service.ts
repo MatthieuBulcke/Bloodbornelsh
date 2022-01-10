@@ -19,7 +19,7 @@ export class ChangeTextService {
   monsters :Monster[] = [];
   constructor(private http: HttpClient) { }
 
-  loadItems() : Observable<any>{
+  LoadWeapons() : Observable<any>{
   return this.http.get<any>('https://localhost:7276/api/Weapons');
   }
 }

@@ -20,7 +20,7 @@ export class WeaponsComponent implements OnInit {
     console.log(this.inventory);
 
     
-    this.service.loadItems()
+    this.service.LoadWeapons()
       .subscribe( (inventory:any) => this.inventory = inventory);
     console.log(this.inventory);
   }
