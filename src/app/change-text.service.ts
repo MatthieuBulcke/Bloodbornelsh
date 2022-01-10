@@ -31,26 +31,6 @@ export class ChangeTextService {
     return element;
   }
 
-  // getOptions(ids: string[]){
-  //   let elements : any;
-  //   let i:number;
-  //   console.log("oui");
-  //   console.log(ids);
-
-  //   for(i=0;i<ids.length;i++){
-  //     console.log("non");
-  //     let id : number = +ids[i];
-  //     console.log(`https://localhost:7276/api/Stories/${id}`);
-  //     this.http.get<Option>(`https://localhost:7276/api/Stories/${id}`)
-  //     .subscribe((Element) =>{ 
-  //       console.log(Element);
-  //       elements.push(Element);
-  //     });
-  //   }
-  //   console.log("peut-être");
-  //   this.options=elements;
-  //   return this.options;
-  // }
 
 }
 
