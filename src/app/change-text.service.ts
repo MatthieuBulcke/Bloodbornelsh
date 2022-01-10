@@ -15,7 +15,7 @@ export class ChangeTextService {
       'Content-Type': 'application/json',
     }
   )
-  options! :Option[]; 
+  options! :Observable<Option[]>; 
   weapons :Weapon[] = [];
   monsters :Monster[] = [];
   constructor(private http: HttpClient) { }
@@ -23,13 +23,29 @@ export class ChangeTextService {
   LoadWeapons() : Observable<any>{
   return this.http.get<any>('https://localhost:7276/api/Weapons');
   }
-  getOption(id: number){
-    let element = this.http.get('https://localhost:7276/api/Options/${id}');
+  getOption(idText: string) :Observable<Option>{
+    let id : number=+idText;
+    let element = this.http.get<Option>(`https://localhost:7276/api/Stories/${id}`);
+    console.log(`https://localhost:7276/api/Stories/${id}`);
     return element;
   }
 
   getOptions(option: Option){
-    option.nextId;
+    let elements : any;
+    console.log("non");
+    let ids : string[] = option.options.split(',');
+    console.log("oui");
+    let i:number;
+    
+
+    for(i=0;i<ids.length;i++){
+      let id : number = +ids[i];
+      console.log(`https://localhost:7276/api/Stories/${id}`);
+      elements.push(this.http.get<Option>(`https://localhost:7276/api/Stories/${id}`));
+      
+    }
+    this.options=elements;
+    return this.options;
   }
 }
 

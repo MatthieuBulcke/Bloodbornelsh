@@ -16,12 +16,13 @@ export class MainComponent implements OnInit {
   constructor(private changeText:ChangeTextService) { }
 
   ngOnInit(): void {
-    // this.getOption(0);
+    this.getOption("2");
+    console.log(this.option.id);
   }
 
-  // getOption(id:number): void{
-  //   this.changeText.getOption(id)
-  //     .subscribe((option) => this.option=option);
+  getOption(id:string): void{
+    this.changeText.getOption(id)
+      .subscribe((story) => this.option=story);
   
-  // }
+  }
 }

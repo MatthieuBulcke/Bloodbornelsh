@@ -1,3 +1,4 @@
 <article class="choices">
-    <p class="opt" *ngFor="let option of options" (click)="continue(option.nextId)">{{option.text}}</p>
+    <h3>{{main_Text.options}}</h3>
+    <p class="opt" *ngFor="let option of choices" (click)="continue(option.options)">{{option.text}}</p>
 </article>
