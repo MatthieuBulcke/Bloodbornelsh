@@ -2,6 +2,26 @@
     width:100%;
     background-color: #4e4e4ed6;
     display: flex;
+    flex-wrap: wrap;
     overflow: auto;
+    justify-content: space-evenly;
     height:25vh;
+}
+figure{
+    max-width:14em;
+    font-size:.8em;
+    color:white;
+    text-align: center;
+    cursor:pointer;
+}
+figure img{
+    border:2px solid grey;
+    width:100%;
+}
+figure:hover img{
+    color:goldenrod;
+    border:2px solid goldenrod;
+}
+figure:hover figcaption{
+    color:goldenrod;
 }

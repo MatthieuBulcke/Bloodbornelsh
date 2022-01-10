@@ -18,8 +18,9 @@ export class WeaponsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.loadWeapons()
-      .subscribe( (weapons:any) => this.inventory = weapons);
+    
+    this.service.LoadWeapons()
+      .subscribe( (inventory:any) => this.inventory = inventory);
     console.log(this.inventory);
   }
   

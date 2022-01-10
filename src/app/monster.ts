@@ -1,9 +1,10 @@
 export interface Monster{
-    id: number;
+    idMonster: number;
     name: string;
-    pv: string;
+    hp: string;
     atk: string;
-    faiblesse: number;
-    loot: number;
-    imgPath: string;
+    def:string;
+    weakness: number;
+    loots: number;
+    imgMonster: string;
 }

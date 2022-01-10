@@ -20,9 +20,8 @@ export class ChangeTextService {
   monsters :Monster[] = [];
   constructor(private http: HttpClient) { }
 
-  loadWeapons(){
-    let element = this.http.get('https://localhost:7276/api/Weapons');
-    return element;
+  LoadWeapons() : Observable<any>{
+  return this.http.get<any>('https://localhost:7276/api/Weapons');
   }
   getOption(id: number){
     let element = this.http.get('https://localhost:7276/api/Options/${id}');
