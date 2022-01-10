@@ -10,35 +10,43 @@ import { Option } from '../option';
 export class OptionsComponent implements OnInit {
 
   main_Text!: Option;
-  choices! : Option[]; 
+  choices!: Option[];
+  ids!: string[];
 
-  constructor(private changeText:ChangeTextService) { }
+  constructor(private changeText: ChangeTextService) { }
 
   ngOnInit(): void {
-    this.initOptions("2");
-    
+    this.getMainText("2");
   }
 
 
-  continue(id:string):void{
+  continue(id: string): void {
     this.changeText.getOption(id)
       .subscribe(main => this.main_Text = main);
-    this.changeText.getOptions(this.main_Text)
-      .subscribe( options => this.choices=options);
 
   }
 
-  getMainText(idText:string){
-    console.log("ça marche au moins ?!");
+  getMainText(id: string) {
+    this.changeText.getOption(id)
+      .subscribe((main) => {
+        this.main_Text = main
+        this.ids = main.options.split(',');
+        console.log(this.ids);
+        this.initOptions(this.ids);
+      });
   }
 
-  initOptions(idText:string):void{
+  initOptions(idText: string[]): void {
     console.log("ALLO ?!");
-    this.changeText.getOption(idText)
-      .subscribe(main => this.main_Text= main);
-    console.log("sortie une");
-    this.changeText.getOptions(this.main_Text)
-      .subscribe( options => this.choices=options); 
-    console.log("sortie");
+    let i: number;
+    for (i = 0; i < idText.length; i++) {
+      console.log("t'es là mamène ?");
+      this.changeText.getOption(idText[i])
+        .subscribe((choice) => {
+          this.choices[i] = choice;
+          console.log(choice);
+        });
+    }
+
   }
 }
