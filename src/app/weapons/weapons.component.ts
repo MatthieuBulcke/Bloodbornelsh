@@ -17,12 +17,12 @@ export class WeaponsComponent implements OnInit {
 
   ngOnInit(): void {
     //this.addWeapon(this.saw_cleaver);
-    console.log(this.inventory);
+    //console.log(this.inventory);
 
     
     this.service.LoadWeapons()
       .subscribe( (inventory:any) => this.inventory = inventory);
-    console.log(this.inventory);
+    //console.log(this.inventory);
   }
   
   addWeapon(weapon : Weapon): void{

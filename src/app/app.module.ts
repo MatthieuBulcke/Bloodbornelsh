@@ -11,6 +11,7 @@ import { ShopComponent } from './shop/shop.component';
 import { FightComponent } from './fight/fight.component';
 import { StartComponent } from './start/start.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     WeaponsComponent,
     ShopComponent,
     FightComponent,
-    StartComponent
+    StartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

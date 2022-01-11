@@ -9,17 +9,24 @@ import { Monster } from './monster';
   providedIn: 'root'
 })
 export class ChangeTextService {
-  headers= new HttpHeaders(
+  headers = new HttpHeaders(
     {
       'Content-Type': 'application/json',
     }
   )
-  options! :Option[]; 
-  weapons :Weapon[] = [];
-  monsters :Monster[] = [];
+  options!: Option[];
+  weapons: Weapon[] = [];
+  monsters: Monster[] = [];
   constructor(private http: HttpClient) { }
 
-  LoadWeapons() : Observable<any>{
-  return this.http.get<any>('https://localhost:7276/api/Weapons');
+  LoadWeapons(): Observable<any> {
+    return this.http.get<any>('https://localhost:7276/api/Weapons');
+  }
+  LoadUsers(): Observable<any> {
+    return this.http.get<any>('https://localhost:7276/api/Users');
+  }
+  InsertUser(user:any): Observable<any> {
+    console.log(this.http.post<any>('https://localhost:7276/api/Users',user))
+    return this.http.post<any>('https://localhost:7276/api/Users',user);
   }
 }

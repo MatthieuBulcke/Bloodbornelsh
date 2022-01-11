@@ -245,3 +245,44 @@ app-weapons{
 app-shop{
     margin: 0;
 }
+/*FORMULAIRES*/
+form{
+    position:absolute;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    padding:10vh 0;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    background-color: #503a217a;
+}
+form input,form button,form label,form p,form span{
+    font-family: Estonia,sans-serif;
+    font-size:2em;
+    width:30%;
+    margin:1em auto;
+    outline:none;
+    border-radius: 10px;
+}
+form label,form span{
+    color:white;
+}
+form p{
+    color:crimson;
+}
+form span{
+    cursor: pointer;
+}
+form span:hover{
+    animation:1s blink infinite;
+}
+@keyframes blink{
+    50%{
+        color:coral;
+    }
+}
+.red{
+    border:2px solid crimson;
+}
