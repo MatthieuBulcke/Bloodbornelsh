@@ -1,3 +1,6 @@
 <article class="choices">
-    <p class="opt" *ngFor="let option of options" (click)="continue(option.nextId)">{{option.text}}</p>
+    <p class="opt" *ngIf="choice1" (click)="continue(choice1.options)">{{choice1.text}}</p>
+    <p class="opt" *ngIf="choice2" (click)="continue(choice2.options)">{{choice2.text}}</p>
+    <p class="opt" *ngIf="choice3" (click)="continue(choice3.options)">{{choice3.text}}</p>
+    <p class="opt" *ngIf="choice4" (click)="continue(choice4.options)">{{choice4.text}}</p>
 </article>

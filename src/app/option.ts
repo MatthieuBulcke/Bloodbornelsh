@@ -1,6 +1,8 @@
 export interface Option {
     id: number;
     text: string;
-    nextId: number;
-    fight: boolean;
+    zone: string;
+    time: number;
+    options: string;
+    combat: boolean;
 }

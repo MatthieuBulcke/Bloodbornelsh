@@ -1,5 +1,5 @@
 <article class="inventory">
-    <figure *ngFor="let weapon of inventory">
+    <figure *ngFor="let weapon of inventory" (click)="selectWeapon(weapon)">
         <img src="../../assets/img/weapons/{{weapon.imgSrc}}.jpg"/>
         <figcaption>{{weapon.name}}</figcaption>
     </figure>

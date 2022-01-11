@@ -2,7 +2,7 @@ export interface Weapon{
     idWeapon: number;
     name : string;
     atk : number;
-    dmgtype : number;
+    dmgType : number;
     price : number;
     imgSrc : string;
 }

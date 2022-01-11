@@ -12,16 +12,19 @@ import { Option } from '../option';
 export class MainComponent implements OnInit {
 
   option! : Option;
-  options! : Option[];
+  id! : string;
   constructor(private changeText:ChangeTextService) { }
 
   ngOnInit(): void {
-    this.option={id:1,text:"ça fonctionne trop drole xptdr nik le lorem ipsum en fait",fight:false,nextId:2};
+    this.changeText.currentId
+      .subscribe(mainId =>{ 
+        this.getOption(mainId);
+    });
+    this.getOption("2");
   }
 
-  getOption(id:number): void{
-    // this.changeText.getOption(id)
-    //   .subscribe((option: Option) => this.option=option);
-    this.option=this.options[id];
+  getOption(id:string): void{
+    this.changeText.getOption(id)
+      .subscribe((story) => this.option=story);
   }
 }
