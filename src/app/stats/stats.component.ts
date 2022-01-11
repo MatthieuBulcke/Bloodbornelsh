@@ -48,9 +48,26 @@ export class StatsComponent implements OnInit {
       return "Tranchant";
     }
     else if (dmg == 2) {
-      return "Contandant";
+      return "Contondant";
+    }
+    else if (dmg==3){
+      return "Magique";
+    }
+    else if (dmg==11){
+      return "Tranchant + Feu";
+    }
+    else if (dmg == 12){
+      return "Tranchant + Electricité";
+    }
+
+    else if (dmg ==21){
+      return "Contondant + Feu";
+    }
+
+    else if (dmg == 22){
+      return "Contondant + Electricité";
     }
     //Need more content
-    return "OH LES DEGATS"
+    return "OH LES DEGATS";
   }
 }
