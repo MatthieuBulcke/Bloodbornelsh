@@ -12,13 +12,13 @@ export class WeaponsComponent implements OnInit {
 
   inventory! : Weapon[];
   weapons!: Weapon[];
+  equipedWeapon! : Weapon;
   
 
   constructor(private service:ChangeTextService) { }
 
   ngOnInit(): void {
 
-    
     this.service.LoadWeapons()
       .subscribe( (inventory:any) => this.inventory = inventory);
     console.log(this.inventory);
@@ -27,5 +27,11 @@ export class WeaponsComponent implements OnInit {
   addWeapon(weapon : Weapon): void{
     this.inventory.push(weapon);
     console.log(`ajout de ${weapon.name}`);
+  }
+
+  selectWeapon(weapon : Weapon){
+    this.equipedWeapon=weapon;
+    console.log(weapon.dmgType);
+    this.service.changeWeapon(weapon);
   }
 }

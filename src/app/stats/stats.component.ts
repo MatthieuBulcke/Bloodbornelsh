@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChangeTextService } from '../change-text.service';
 
 @Component({
   selector: 'app-stats',
@@ -11,21 +12,45 @@ export class StatsComponent implements OnInit {
   stamina!: number;
   fioles!: number;
   balles!: number;
-  echos! : number;
+  echos!: number;
+  dmg_type!: number;
+  dmgString!: string;
+  atk!: number;
 
-  constructor() { }
 
-  
+  constructor(private changeText: ChangeTextService) { }
+
+
 
   ngOnInit(): void {
     this.initStats();
+    this.dmgTypeToText(1);
+    this.changeText.currentDmgType
+      .subscribe((dmg) => {
+        this.dmg_type = dmg;
+        this.dmgString= this.dmgTypeToText(dmg);
+      });
+      
+
+    this.changeText.currentAtk.subscribe(atk => this.atk = atk);
   }
 
-  initStats(): void{
-    this.pv=100;
-    this.stamina=100;
-    this.fioles=5;
-    this.balles=5;
-    this.echos=10;
+  initStats(): void {
+    this.pv = 100;
+    this.stamina = 100;
+    this.fioles = 5;
+    this.balles = 5;
+    this.echos = 10;
+  }
+
+  dmgTypeToText(dmg: number) : string {
+    if (dmg == 1) {
+      return "Tranchant";
+    }
+    else if (dmg == 2) {
+      return "Contandant";
+    }
+    //Need more content
+    return "OH LES DEGATS"
   }
 }

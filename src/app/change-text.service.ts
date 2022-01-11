@@ -10,29 +10,40 @@ import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/u
   providedIn: 'root'
 })
 export class ChangeTextService {
-  headers= new HttpHeaders(
+  headers = new HttpHeaders(
     {
       'Content-Type': 'application/json',
     }
   )
-  options! :Observable<Option[]>; 
-  weapons :Weapon[] = [];
-  monsters :Monster[] = [];
-  private idSource = new BehaviorSubject('2');
+  options!: Observable<Option[]>;
+  weapons: Weapon[] = [];
+  monsters: Monster[] = [];
+  private idSource = new BehaviorSubject('2'); //Pour changer le main texte sur un clique d'option.
   currentId = this.idSource.asObservable();
+
+  private dmgType = new BehaviorSubject(1);
+  currentDmgType = this.dmgType.asObservable();
+
+  private atk = new BehaviorSubject(5);
+  currentAtk = this.atk.asObservable();
 
   constructor(private http: HttpClient) { }
 
 
-changeId(id: string){
-  this.idSource.next(id);
-}
-
-  LoadWeapons() : Observable<any>{
-  return this.http.get<any>('https://localhost:7276/api/Weapons');
+  changeId(id: string) {
+    this.idSource.next(id);
   }
-  getOption(idText: string) :Observable<Option>{
-    let id : number=+idText;
+
+  changeWeapon(weapon: Weapon) {
+    this.dmgType.next(weapon.dmgType);
+    this.atk.next(weapon.atk);
+  }
+
+  LoadWeapons(): Observable<any> {
+    return this.http.get<any>('https://localhost:7276/api/Weapons');
+  }
+  getOption(idText: string): Observable<Option> {
+    let id: number = +idText;
     let element = this.http.get<Option>(`https://localhost:7276/api/Stories/${id}`);
     console.log(`https://localhost:7276/api/Stories/${id}`);
     console.log(element);
