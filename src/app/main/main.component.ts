@@ -11,20 +11,39 @@ import { Option } from '../option';
 })
 export class MainComponent implements OnInit {
 
-  option! : Option;
-  id! : string;
-  constructor(private changeText:ChangeTextService) { }
+  option!: Option;
+  id!: string;
+  backUrl! : string;
+  constructor(private changeText: ChangeTextService) { }
 
   ngOnInit(): void {
     this.changeText.currentId
-      .subscribe(mainId =>{ 
+      .subscribe(mainId => {
         this.getOption(mainId);
+      });
+    this.changeText.currentZone.subscribe(zone => {
+      this.backUrl=this.changeBack(zone);
     });
-    this.getOption("2");
   }
 
-  getOption(id:string): void{
+  getOption(id: string): void {
     this.changeText.getOption(id)
-      .subscribe((story) => this.option=story);
+      .subscribe((story) => this.option = story);
+  }
+
+  changeBack(zone: string) {
+    if (zone == "Place de Yarnham") {
+      return "../../assets/img/Outback-1.png";
+    }
+    else if (zone == "Egout") {
+      return "../../assets/img/Egouts.jpeg";
+
+    }
+    else if (zone == "Faubourg de la cathédrale") {
+      return "../../assets/img/Faubourg.jpeg";
+    }
+    else{
+     return "../../assets/img/Outback-1.png";
+    }
   }
 }

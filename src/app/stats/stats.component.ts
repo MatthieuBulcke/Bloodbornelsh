@@ -16,6 +16,7 @@ export class StatsComponent implements OnInit {
   dmg_type!: number;
   dmgString!: string;
   atk!: number;
+  time! : number;
 
 
   constructor(private changeText: ChangeTextService) { }
@@ -30,6 +31,10 @@ export class StatsComponent implements OnInit {
         this.dmg_type = dmg;
         this.dmgString= this.dmgTypeToText(dmg);
       });
+      this.changeText.currentTime
+        .subscribe(time =>{
+          this.time = time;
+        } )
       
 
     this.changeText.currentAtk.subscribe(atk => this.atk = atk);

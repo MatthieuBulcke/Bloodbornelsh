@@ -39,6 +39,7 @@ export class OptionsComponent implements OnInit {
         this.main_Text = main
         this.ids = main.options.split(',');
         this.initOptions(this.ids);
+        this.changeText.changeTime(main);
       });
   }
 

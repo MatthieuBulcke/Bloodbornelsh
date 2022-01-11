@@ -36,6 +36,12 @@ export class ChangeTextService {
   private atk = new BehaviorSubject(5);
   currentAtk = this.atk.asObservable();
 
+  private time = new BehaviorSubject(1);
+  currentTime = this.time.asObservable();
+
+  private zone = new BehaviorSubject("Place de Yarnham");
+  currentZone = this.zone.asObservable();
+
   changeId(id: string) {
     this.idSource.next(id);
   }
@@ -45,6 +51,11 @@ export class ChangeTextService {
     this.atk.next(weapon.atk);
   }
 
+  changeTime(option : Option){
+    this.time.next(option.time);
+    this.zone.next(option.zone);
+  }
+  
   LoadWeapons(): Observable<any> {
     return this.http.get<any>('https://localhost:7276/api/Weapons');
   }
