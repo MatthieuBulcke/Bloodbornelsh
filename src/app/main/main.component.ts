@@ -18,14 +18,13 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.changeText.currentId
       .subscribe(mainId =>{ 
-        this.id = mainId;
-        this.changeText.getOption(mainId);
+        this.getOption(mainId);
     });
+    this.getOption("2");
   }
 
-  // getOption(id:string): void{
-  //   this.changeText.getOption(id)
-  //     .subscribe((story) => this.option=story);
-  
-  // }
+  getOption(id:string): void{
+    this.changeText.getOption(id)
+      .subscribe((story) => this.option=story);
+  }
 }
