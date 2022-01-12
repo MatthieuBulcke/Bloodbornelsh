@@ -1,6 +1,6 @@
-<article>
-    <figure class="monsterFrame empty">
-        <!--<img class="monsterImg" src={{monster.imgMonster}}>-->
+<article *ngIf="monster">
+    <figure class="monsterFrame ">
+        <img class="monsterImg" src="../../assets/img/monstres/{{monster.imgMonster}}.png">
         <figcaption class="monster"></figcaption>
         <button class="atk">ATK</button>
         <button class="useHeal">HEAL</button>
