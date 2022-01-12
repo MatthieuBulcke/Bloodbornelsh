@@ -18,7 +18,8 @@ export class ChangeTextService {
   options!: Observable<Option[]>;
   weapons: Weapon[] = [];
   monsters: Monster[] = [];
-  userWeapons: any;
+  userWeapons:any;
+  inventory:any;
   constructor(private http: HttpClient) { }
 
   getUserProfile(): Observable<any> {
@@ -31,6 +32,9 @@ export class ChangeTextService {
   InsertUser(user: any): Observable<any> {
     //console.log(this.http.post<any>('https://localhost:7276/api/Users',user))
     return this.http.post<any>('https://localhost:7276/api/Users', user);
+  }
+  InsertWeapon(id:any,inventory:any): Observable<any> {
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyInventory/${id}/${inventory}`);
   }
   private idSource = new BehaviorSubject('2'); //Pour changer le main texte sur un clique d'option.
   currentId = this.idSource.asObservable();
@@ -96,22 +100,11 @@ export class ChangeTextService {
   }
 
   LoadWeapons(): Observable<any> {
-    let profileUser: any;
-    let weapons: any;
-    let inventory: any;
-    this.getUserProfile().subscribe((profile: any) => {
-      profileUser = profile;
-      inventory = profileUser.inventory;
-      console.log("inventaire :" + inventory);
-      for (let i = 0; i < inventory.length; i++) {
-        this.LoadWeapon(inventory[i]);
-      }
-    });
-    console.log('weapons :' + weapons)
+    let weapons = this.http.get<Weapon>(`https://localhost:7276/api/Weapons`)
     return weapons;
   }
-  LoadWeapon(id: number) {
-    let weapon = this.http.get<Weapon>(`https://localhost:7276/api/Weapons${id}`)
+  LoadWeapon(id:number): Observable<any> {
+    let weapon = this.http.get<Weapon>(`https://localhost:7276/api/Weapons/${id}`)
     //console.log(weapon);
     return weapon;
   }
