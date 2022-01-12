@@ -40,7 +40,6 @@ export class OptionsComponent implements OnInit {
         this.ids = main.options.split(',');
         this.initOptions(this.ids);
         this.changeText.changeMainGlobalInfos(main);
-        console.log(main.combat);
       });
   }
 
