@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangeTextService } from '../change-text.service';
+import { Profile } from '../model/profile.model';
 
 @Component({
   selector: 'app-stats',
@@ -7,9 +8,9 @@ import { ChangeTextService } from '../change-text.service';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-
-  pv!: number;
-  stamina!: number;
+  profile!:Profile;
+  pv!: string;
+  stamina!: string;
   fioles!: number;
   balles!: number;
   echos!: number;
@@ -24,7 +25,6 @@ export class StatsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.initStats();
     this.dmgTypeToText(1);
     this.changeText.currentDmgType
       .subscribe((dmg) => {
@@ -38,14 +38,15 @@ export class StatsComponent implements OnInit {
       
 
     this.changeText.currentAtk.subscribe(atk => this.atk = atk);
+    this.changeText.getUserProfile().subscribe((profiles:Profile) => {this.profile = profiles ;console.log(this.profile);this.initStats();});
   }
 
   initStats(): void {
-    this.pv = 100;
-    this.stamina = 100;
-    this.fioles = 5;
-    this.balles = 5;
-    this.echos = 10;
+    this.pv = (this.profile.life).split('/')[0];
+    this.stamina = (this.profile.stamina).split('/')[0];
+    this.fioles = this.profile.potions;
+    this.balles = this.profile.bullets;
+    this.echos = this.profile.echos;
   }
 
   dmgTypeToText(dmg: number) : string {
