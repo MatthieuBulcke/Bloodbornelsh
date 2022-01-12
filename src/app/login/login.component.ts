@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
     //Si le localStorage est rempli, faire disparaitre le formulaire de connexion;
     if (window.localStorage.getItem('isLoggedIn')) {
       let forms = document.getElementsByTagName("form");
-      forms[0].classList.add('empty');
+      if(forms[0]){
+        forms[0].classList.add('empty');
+      }
     }
   }
   ngOnInit(): void { }
@@ -74,8 +76,14 @@ export class LoginComponent implements OnInit {
     error.innerHTML = "";
   }
   ngAfterViewInit() {
-    this.button = (document.getElementsByTagName('button')[9]).addEventListener("click", this.onLoggedin.bind(this));
-    this.inscriptionButton = (document.getElementsByTagName('button')[10]).addEventListener("click", this.onSignIn.bind(this));
+    this.button = (document.getElementsByTagName('button')[9]);
+    if(this.button){
+      this.button.addEventListener("click", this.onLoggedin.bind(this));
+    }
+    this.inscriptionButton = (document.getElementsByTagName('button')[10]);
+    if(this.inscriptionButton){
+      this.inscriptionButton.addEventListener("click", this.onSignIn.bind(this));
+    }
     this.spans = document.getElementsByTagName('span');
     console.log(this.spans)
     this.spans[1].addEventListener('click', this.switchCase);
