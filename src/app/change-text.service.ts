@@ -18,7 +18,7 @@ export class ChangeTextService {
   options!: Observable<Option[]>;
   weapons: Weapon[] = [];
   monsters: Monster[] = [];
-  userWeapons:any;
+  userWeapons: any;
   constructor(private http: HttpClient) { }
 
   getUserProfile(): Observable<any> {
@@ -47,14 +47,17 @@ export class ChangeTextService {
   private zone = new BehaviorSubject("Place de Yarnham"); //Gère la zone
   currentZone = this.zone.asObservable();
 
-  private fight = new BehaviorSubject(0);
+  private fight = new BehaviorSubject(0); //Ecoute en permanence si un combat doit se déclencher
   currentFight = this.fight.asObservable();
 
-  private vials = new BehaviorSubject(5);
+  private vials = new BehaviorSubject(5); // Gère les fioles de soin du joueur
   currentVial = this.vials.asObservable();
 
-  private pvJoueur = new BehaviorSubject(100);
+  private pvJoueur = new BehaviorSubject(100); //Gère les pv du joueur
   currentPv = this.pvJoueur.asObservable();
+
+  private bullets = new BehaviorSubject(5); //Gère les balles d'argent du joueur
+  currentBullets = this.bullets.asObservable();
 
   changeId(id: string) {
     this.idSource.next(id);
@@ -65,46 +68,49 @@ export class ChangeTextService {
     this.atk.next(weapon.atk);
   }
 
-  changeMainGlobalInfos(option : Option){
+  changeMainGlobalInfos(option: Option) {
     this.time.next(option.time);
     this.zone.next(option.zone);
     this.fight.next(option.combat);
   }
-  
-  useHeal(){
-    if(this.pvJoueur.value<50){
-      this.pvJoueur.next(this.pvJoueur.value+50);
-      this.vials.next(this.vials.value-1);
+
+  useHeal() {
+    if (this.pvJoueur.value < 50 && this.vials.value > 0) {
+      this.pvJoueur.next(this.pvJoueur.value + 50);
+      this.vials.next(this.vials.value - 1);
     }
-    else if(this.pvJoueur.value>50 && this.pvJoueur.value<100){
+    else if (this.pvJoueur.value > 50 && this.pvJoueur.value < 100 && this.vials.value > 0) {
       this.pvJoueur.next(100);
-      this.vials.next(this.vials.value-1);
+      this.vials.next(this.vials.value - 1);
     }
-    else{
-      
-    }
-   
   }
 
-  takeDamage(dmg:number){
-    this.pvJoueur.next(this.pvJoueur.value-dmg);
+  takeDamage(dmg: number) {
+    this.pvJoueur.next(this.pvJoueur.value - dmg);
+  }
+
+  useBullet() {
+    if(this.bullets.value<0){
+    this.bullets.next(this.bullets.value - 1);
+    }
   }
 
   LoadWeapons(): Observable<any> {
     let profileUser: any;
     let weapons: any;
-    let inventory:any;
-    this.getUserProfile().subscribe((profile: any) => { profileUser = profile;
+    let inventory: any;
+    this.getUserProfile().subscribe((profile: any) => {
+      profileUser = profile;
       inventory = profileUser.inventory;
-      console.log("inventaire :"+inventory);
+      console.log("inventaire :" + inventory);
       for (let i = 0; i < inventory.length; i++) {
         this.LoadWeapon(inventory[i]);
       }
     });
-    console.log('weapons :'+weapons)
+    console.log('weapons :' + weapons)
     return weapons;
   }
-  LoadWeapon(id:number){
+  LoadWeapon(id: number) {
     let weapon = this.http.get<Weapon>(`https://localhost:7276/api/Weapons${id}`)
     //console.log(weapon);
     return weapon;
@@ -115,7 +121,7 @@ export class ChangeTextService {
     return element;
   }
 
-  getMonster(id:number){
+  getMonster(id: number) {
     return this.http.get<Monster>(`https://localhost:7276/api/Monsters/${id}`);
   }
 }

@@ -35,11 +35,12 @@ export class StatsComponent implements OnInit {
       .subscribe(time => {
         this.time = time;
       });
-      this.changeText.currentVial
-        .subscribe(fioles => this.fioles=fioles);
-      this.changeText.currentPv
-        .subscribe(pv => this.pv=pv.toString());
-
+    this.changeText.currentVial
+      .subscribe(fioles => this.fioles = fioles);
+    this.changeText.currentPv
+      .subscribe(pv => this.pv = pv.toString());
+    this.changeText.currentBullets
+    .subscribe(bul => this.balles=bul);
 
     this.changeText.currentAtk.subscribe(atk => this.atk = atk);
     this.changeText.getUserProfile().subscribe((profiles: Profile) => { this.profile = profiles; console.log(this.profile); this.initStats(); });
