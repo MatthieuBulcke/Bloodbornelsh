@@ -1,5 +1,15 @@
 <article class="game">
-    <div class="container" [ngStyle]="{'background': 'url('+backUrl+')'}">
+    <div class="container" 
+    [ngStyle]="{'background-image': 'url('+backUrl+')'}"
+    [style.background-size]="'cover'"
+    [style.background-position]="'center'"
+    [style.background-repeat]="'no-repeat'"    
+    >
         <p class="text">{{option.text}}</p>
     </div>
 </article>
+        
+        <!-- [ngStyle]="{'background-image': 'url('+backUrl+')'}"
+        [style.background-size]="'cover'"
+        [style.background-position]="'center'"
+        [style.background-repeat]="'no-repeat'" -->
