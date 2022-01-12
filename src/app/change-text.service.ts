@@ -18,14 +18,19 @@ export class ChangeTextService {
   options!: Observable<Option[]>;
   weapons: Weapon[] = [];
   monsters: Monster[] = [];
+  userWeapons:any;
   constructor(private http: HttpClient) { }
-  
+
+  getUserProfile(): Observable<any> {
+    let id: string | null = localStorage.getItem('userId');
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/${id}`);
+  }
   LoadUsers(): Observable<any> {
     return this.http.get<any>('https://localhost:7276/api/Users');
   }
-  InsertUser(user:any): Observable<any> {
-    console.log(this.http.post<any>('https://localhost:7276/api/Users',user))
-    return this.http.post<any>('https://localhost:7276/api/Users',user);
+  InsertUser(user: any): Observable<any> {
+    //console.log(this.http.post<any>('https://localhost:7276/api/Users',user))
+    return this.http.post<any>('https://localhost:7276/api/Users', user);
   }
   private idSource = new BehaviorSubject('2'); //Pour changer le main texte sur un clique d'option.
   currentId = this.idSource.asObservable();
@@ -46,13 +51,29 @@ export class ChangeTextService {
   }
 
   LoadWeapons(): Observable<any> {
-    return this.http.get<any>('https://localhost:7276/api/Weapons');
+    let profileUser: any;
+    let weapons: any;
+    let inventory:any;
+    this.getUserProfile().subscribe((profile: any) => { profileUser = profile;
+      inventory = profileUser.inventory;
+      console.log("inventaire :"+inventory);
+      for (let i = 0; i < inventory.length; i++) {
+        this.LoadWeapon(inventory[i]);
+      }
+    });
+    console.log('weapons :'+weapons)
+    return weapons;
+  }
+  LoadWeapon(id:number){
+    let weapon = this.http.get<Weapon>(`https://localhost:7276/api/Weapons${id}`)
+    //console.log(weapon);
+    return weapon;
   }
   getOption(idText: string): Observable<Option> {
     let id: number = +idText;
     let element = this.http.get<Option>(`https://localhost:7276/api/Stories/${id}`);
-    console.log(`https://localhost:7276/api/Stories/${id}`);
-    console.log(element);
+    //console.log(`https://localhost:7276/api/Stories/${id}`);
+    //console.log(element);
     return element;
   }
 }

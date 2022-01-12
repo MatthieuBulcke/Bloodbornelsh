@@ -6,7 +6,7 @@ import { User } from './model/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private service:ChangeTextService) { }
+  constructor(private service:ChangeTextService) {  }
   users:any;
   DBUsers = this.service.LoadUsers().subscribe( (users:any) =>{this.users = users;this.userCheck()} );
   
@@ -15,6 +15,8 @@ export class AuthService {
     { 'mail': 'mijeandu5962@gmail.com', 'password': 'edonculpe', 'roles': ['null'] }
   ];*/
   public loggedUser!: string;
+  public loggedUserKey!: string;
+  public loggedUserId!: string;
   public isLoggedIn: boolean = false;
   public roles!: string[];
   public id!:number;
@@ -22,14 +24,15 @@ export class AuthService {
   userCheck(){
     let user = localStorage.getItem('loggedUser');
     for(let i = 0;i<this.users.length;i++){
-      console.log(this.users[i]);
+      //console.log(this.users[i]);
       //console.log(user);
       if(user == this.users[i].mail){
+        this.id = this.users[i].idUser;
         console.log(this.id);
         console.log(this.users[i].idUser);
         //Si l'id ne correspond pas a l'utilisateur, détruire la session
         if(i+1 != +this.users[i].idUser){
-          localStorage.clear();
+          //localStorage.clear();
           console.log('cleared');
         }
       }
@@ -71,10 +74,14 @@ export class AuthService {
         validUser = true;
         this.loggedUser = currentUser.mail;
         this.isLoggedIn = true;
-        this.roles = currentUser.roles;
+        this.loggedUserKey = currentUser.key;
+        this.loggedUserId = currentUser.idUser;
         localStorage.setItem('loggedUser', this.loggedUser);
         localStorage.setItem('isLoggedIn', String(this.isLoggedIn));
+        localStorage.setItem('loggedUserKey', this.loggedUserKey);
+        localStorage.setItem('userId', this.loggedUserId);
         console.log("id = "+this.id);
+        document.location.href="/";
       }
     });
     return validUser;
