@@ -31,10 +31,14 @@ export class FightComponent implements OnInit {
       if(this.life <= 0){
         this.monster=null;
       }
-    })
+    });
+    if(this.monster!=null){
+    this.service.takeDamage(this.monster.atk);
+    }
 
   }
   useHeal(){
+    this.service.useHeal();
   }
 
   startFight(id: number){

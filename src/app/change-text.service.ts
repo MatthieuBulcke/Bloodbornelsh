@@ -50,6 +50,12 @@ export class ChangeTextService {
   private fight = new BehaviorSubject(0);
   currentFight = this.fight.asObservable();
 
+  private vials = new BehaviorSubject(5);
+  currentVial = this.vials.asObservable();
+
+  private pvJoueur = new BehaviorSubject(100);
+  currentPv = this.pvJoueur.asObservable();
+
   changeId(id: string) {
     this.idSource.next(id);
   }
@@ -65,6 +71,24 @@ export class ChangeTextService {
     this.fight.next(option.combat);
   }
   
+  useHeal(){
+    if(this.pvJoueur.value<50){
+      this.pvJoueur.next(this.pvJoueur.value+50);
+      this.vials.next(this.vials.value-1);
+    }
+    else if(this.pvJoueur.value>50 && this.pvJoueur.value<100){
+      this.pvJoueur.next(100);
+      this.vials.next(this.vials.value-1);
+    }
+    else{
+      
+    }
+   
+  }
+
+  takeDamage(dmg:number){
+    this.pvJoueur.next(this.pvJoueur.value-dmg);
+  }
 
   LoadWeapons(): Observable<any> {
     let profileUser: any;
