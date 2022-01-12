@@ -4,5 +4,5 @@ export interface Option {
     zone: string;
     time: number;
     options: string;
-    combat: boolean;
+    combat: number;
 }

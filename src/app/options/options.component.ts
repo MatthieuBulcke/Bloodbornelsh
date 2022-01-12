@@ -39,7 +39,8 @@ export class OptionsComponent implements OnInit {
         this.main_Text = main
         this.ids = main.options.split(',');
         this.initOptions(this.ids);
-        this.changeText.changeTime(main);
+        this.changeText.changeMainGlobalInfos(main);
+        console.log(main.combat);
       });
   }
 
@@ -48,28 +49,24 @@ export class OptionsComponent implements OnInit {
     if (idText[0]) {
       this.changeText.getOption(idText[0])
         .subscribe((choice) => {
-          console.log(choice);
           this.choice1 = choice;
         });
       }
       if (idText[1]) {
         this.changeText.getOption(idText[1])
           .subscribe((choice) => {
-            console.log(choice);
             this.choice2 = choice;
           });
         }
         if (idText[2]) {
           this.changeText.getOption(idText[2])
             .subscribe((choice) => {
-              console.log(choice);
               this.choice3 = choice;
             });
           }
           if (idText[3]) {
             this.changeText.getOption(idText[3])
               .subscribe((choice) => {
-                console.log(choice);
                 this.choice3 = choice;
               });
           }

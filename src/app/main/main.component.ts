@@ -31,6 +31,7 @@ export class MainComponent implements OnInit {
       .subscribe((story) => this.option = story);
   }
 
+  /***** Fonction qui permet de changer le background image selon la zone  *****/
   changeBack(zone: string) {
     if (zone == "Place de Yarnham") {
       return "../../assets/img/Outback-1.png";

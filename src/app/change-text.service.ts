@@ -30,17 +30,20 @@ export class ChangeTextService {
   private idSource = new BehaviorSubject('2'); //Pour changer le main texte sur un clique d'option.
   currentId = this.idSource.asObservable();
 
-  private dmgType = new BehaviorSubject(1);
+  private dmgType = new BehaviorSubject(1); //Gère le type de dégâts
   currentDmgType = this.dmgType.asObservable();
 
-  private atk = new BehaviorSubject(5);
+  private atk = new BehaviorSubject(5); //Gère la valeur d'attaque du joueur
   currentAtk = this.atk.asObservable();
 
-  private time = new BehaviorSubject(1);
+  private time = new BehaviorSubject(1); //Gère le temps
   currentTime = this.time.asObservable();
 
-  private zone = new BehaviorSubject("Place de Yarnham");
+  private zone = new BehaviorSubject("Place de Yarnham"); //Gère la zone
   currentZone = this.zone.asObservable();
+
+  private fight = new BehaviorSubject(0);
+  currentFight = this.fight.asObservable();
 
   changeId(id: string) {
     this.idSource.next(id);
@@ -51,19 +54,23 @@ export class ChangeTextService {
     this.atk.next(weapon.atk);
   }
 
-  changeTime(option : Option){
+  changeMainGlobalInfos(option : Option){
     this.time.next(option.time);
     this.zone.next(option.zone);
+    this.fight.next(option.combat);
   }
   
+
   LoadWeapons(): Observable<any> {
     return this.http.get<any>('https://localhost:7276/api/Weapons');
   }
   getOption(idText: string): Observable<Option> {
     let id: number = +idText;
     let element = this.http.get<Option>(`https://localhost:7276/api/Stories/${id}`);
-    console.log(`https://localhost:7276/api/Stories/${id}`);
-    console.log(element);
     return element;
+  }
+
+  getMonster(id:number){
+    return this.http.get<Monster>(`https://localhost:7276/api/Monsters/${id}`);
   }
 }
