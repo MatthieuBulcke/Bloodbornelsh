@@ -33,7 +33,7 @@ export class AuthService {
         //Si l'id ne correspond pas a l'utilisateur, détruire la session
         if(i+1 != +this.users[i].idUser){
           //localStorage.clear();
-          console.log('cleared');
+          //console.log('cleared');
         }
       }
     }
