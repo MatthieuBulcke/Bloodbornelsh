@@ -99,7 +99,7 @@ export class ChangeTextService {
   }
 
   useBullet() {
-    if(this.bullets.value<0){
+    if(this.bullets.value>0){
     this.bullets.next(this.bullets.value - 1);
     }
   }
