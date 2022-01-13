@@ -68,7 +68,7 @@ export class ChangeTextService {
   private bullets = new BehaviorSubject(5); //Gère les balles d'argent du joueur
   currentBullets = this.bullets.asObservable();
 
-  private echos = new BehaviorSubject(10);
+  private echos = new BehaviorSubject(10); //Gère l'argent du joueur
   currentEchos = this.echos.asObservable();
 
   changeId(id: string) {
