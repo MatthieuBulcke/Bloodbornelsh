@@ -67,10 +67,16 @@ export class LoginComponent implements OnInit {
     error.innerHTML = "";
   }
   ngAfterViewInit() {
-    this.button = document.getElementsByTagName('button');
+    this.button = document.getElementsByClassName('connect');
+    this.inscriptionButton = document.getElementsByClassName('signIn');
     console.log(this.button)
-    this.button[6].addEventListener("click", this.onLoggedin.bind(this));
-    this.button[7].addEventListener("click", this.onSignIn.bind(this));
+    console.log(this.inscriptionButton)
+    if(this.button[0]){
+      this.button[0].addEventListener("click", this.onLoggedin.bind(this));
+    }
+    if(this.inscriptionButton[0]){
+      this.inscriptionButton[0].addEventListener("click", this.onSignIn.bind(this));
+    }
     this.spans = document.getElementsByTagName('span');
     console.log(this.spans);
     this.spans[1].addEventListener('click', this.switchCase);
