@@ -50,11 +50,16 @@ export class StatsComponent implements OnInit {
   }
 
   initStats(): void {
+    //Init du visuel
     this.pv = (this.profile.life).split('/')[0];
     this.stamina = (this.profile.stamina).split('/')[0];
     this.fioles = this.profile.potions;
     this.balles = this.profile.bullets;
     this.echos = this.profile.echos;
+
+    //Init dans les observables current
+    this.changeText.initStats(this.profile);
+
   }
 
   dmgTypeToText(dmg: number): string {

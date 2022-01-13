@@ -5,6 +5,7 @@ import { Option } from './option';
 import { Weapon } from './weapon';
 import { Monster } from './monster';
 import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
+import { Profile } from './model/profile.model';
 
 @Injectable({
   providedIn: 'root'
@@ -86,6 +87,13 @@ export class ChangeTextService {
 
   private echos = new BehaviorSubject(10); //Gère l'argent du joueur
   currentEchos = this.echos.asObservable();
+
+  initStats(profile : Profile){
+    this.pvJoueur.next(profile.life.split('/')[0]);
+    this.vials.next(profile.potions);
+    this.bullets.next(profile.bullets);
+    this.echos.next(profile.echos);
+  }
 
   changeId(id: string) {
     this.idSource.next(id);
