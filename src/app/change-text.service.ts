@@ -141,7 +141,12 @@ export class ChangeTextService {
     this.UpdateLife(parseInt(localStorage.getItem("idUser") as string), this.pvJoueur.value);
     this.UpdatePotions(parseInt(localStorage.getItem("idUser") as string), this.vials.value);
   }
-
+  addHeal(){
+    this.vials.next(this.vials.value + 1);
+  }
+  addBullet(){
+    this.bullets.next(this.bullets.value + 1);
+  }
   takeDamage(dmg: number) {
     let pvNum: number = +this.pvJoueur.value;
     this.pvJoueur.next(`${pvNum - dmg}`);

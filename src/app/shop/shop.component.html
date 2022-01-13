@@ -1,9 +1,9 @@
 <article>
-    <div class="shop">
+    <div class="shop empty">
         <span class="pognon">
             <figure>
                 <img class="icon" src="../assets/img/Echo.png">
-                <figcaption class="echos">Echos {{this.profile.echos}}</figcaption>
+                <figcaption class="echos">Echos {{echos}}</figcaption>
             </figure>
         </span>
         <figure>
@@ -14,12 +14,12 @@
             <figure class="article">
                 <img class="icon" src="../assets/img/Heal.png">
                 <figcaption class="heal">Fioles</figcaption>
-                <button class="buy first">Acheter</button>
+                <button (click)="buyPotion()" class="buy first">Acheter</button>
             </figure>
             <figure class="article">
                 <img class="icon" src="../assets/img/Ammo.png">
                 <figcaption class="bullets">Balles</figcaption>
-                <button class="buy second">Acheter</button>
+                <button (click)="buyBullet()" class="buy second">Acheter</button>
             </figure>
             <figure class="article" *ngFor="let weapon of weapons">
                 <img class="weapon" src="../assets/img/weapons/{{weapon.imgSrc}}.jpg"/>
