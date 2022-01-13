@@ -29,6 +29,10 @@ export class WeaponsComponent implements OnInit {
         }
       }
     });
+    this.service.currentWeaponToAdd
+    .subscribe(id =>{
+      this.addWeaponToInventory(id);
+    })
     //this.service.LoadWeapons().subscribe((inventory:any) => this.inventory = inventory);
   }
   //TEST FONCTION UPDATES
@@ -64,4 +68,17 @@ export class WeaponsComponent implements OnInit {
     console.log(weapon.dmgType);
     this.service.changeWeapon(weapon);
   }
+
+  addWeaponToInventory(id: number){
+    this.service.LoadWeapon(id)
+      .subscribe(weapon =>{
+        this.inventory.push(weapon);
+        if (this.inventory.length==1){
+          this.selectWeapon(this.inventory[0]);
+        }
+      })
+  }
+
 }
+
+

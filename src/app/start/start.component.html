@@ -1,15 +1,15 @@
-<article class="chooseWeapon empty">
+<article class="chooseWeapon" *ngIf="start">
     <h3>Choisissez une arme</h3>
-    <figure class="weapon">
+    <figure class="weapon" (click)="selectWeapon(1)">
         <img class="weaponImg" src="../assets/img/weapons/hunter_axe.jpg">
-        <figcaption>hunter_axe</figcaption>
+        <figcaption>Hache du chasseur</figcaption>
     </figure>
-    <figure class="weapon">
+    <figure class="weapon" (click)="selectWeapon(3)">
         <img class="weaponImg" src="../assets/img/weapons/saw_cleaver.jpg">
-        <figcaption>saw_cleaver</figcaption>
+        <figcaption>Couperet-scie</figcaption>
     </figure>
-    <figure class="weapon">
+    <figure class="weapon" (click)="selectWeapon(2)">
         <img class="weaponImg" src="../assets/img/weapons/threaded_cane.jpg">
-        <figcaption>threaded_cane</figcaption>
+        <figcaption>Canne-fouet</figcaption>
     </figure>
 </article>

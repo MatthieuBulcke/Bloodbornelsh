@@ -45,18 +45,13 @@ export class StatsComponent implements OnInit {
       .subscribe(echos => this.echos = echos);
     this.changeText.currentAtk
       .subscribe(atk => this.atk = atk);
+      this.changeText.currentStam
+        .subscribe(stam => this.stamina=stam);
       
     this.changeText.getUserProfile().subscribe((profiles: Profile) => { this.profile = profiles; console.log(this.profile); this.initStats(); });
   }
 
   initStats(): void {
-    //Init du visuel
-    this.pv = (this.profile.life).split('/')[0];
-    this.stamina = (this.profile.stamina).split('/')[0];
-    this.fioles = this.profile.potions;
-    this.balles = this.profile.bullets;
-    this.echos = this.profile.echos;
-
     //Init dans les observables current
     this.changeText.initStats(this.profile);
 
