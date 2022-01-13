@@ -79,12 +79,18 @@ export class LoginComponent implements OnInit {
     }
     this.spans = document.getElementsByTagName('span');
     console.log(this.spans);
-    this.spans[1].addEventListener('click', this.switchCase);
-    this.spans[2].addEventListener('click', this.switchCase);
+    if(this.spans[2]){
+      this.spans[1].addEventListener('click', this.switchCase);
+      this.spans[2].addEventListener('click', this.switchCase);
+    }
+    else{
+      this.spans[0].addEventListener('click', this.switchCase);
+      this.spans[1].addEventListener('click', this.switchCase);
+    }
     //console.log(document.getElementsByTagName('button')[9]);
     //console.log(this.authService);
     //Si le localStorage est rempli, faire disparaitre le formulaire de connexion;
-    if (window.localStorage.getItem('isLoggedIn')) {
+    if (window.localStorage.getItem('userId')) {
       let forms = document.getElementsByTagName("form");
       if(forms[0]){
         forms[0].classList.add('empty');

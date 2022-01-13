@@ -248,6 +248,7 @@ app-shop{
 }
 /*FORMULAIRES*/
 form{
+    z-index:10;
     position:absolute;
     display: flex;
     flex-flow: column;
