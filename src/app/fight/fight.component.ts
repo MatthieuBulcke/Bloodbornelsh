@@ -53,7 +53,7 @@ export class FightComponent implements OnInit {
   }
 
   startFight(id: number) {
-    if (id != 0) {
+    if (id != 0 && id!=1) {
       this.service.getMonster(id)
         .subscribe(monster => {
           this.monster = monster;

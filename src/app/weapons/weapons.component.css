@@ -25,3 +25,7 @@ figure:hover img{
 figure:hover figcaption{
     color:goldenrod;
 }
+
+.active{
+    border:2px solid goldenrod;
+}
