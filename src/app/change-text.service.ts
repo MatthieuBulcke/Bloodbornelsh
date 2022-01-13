@@ -78,7 +78,7 @@ export class ChangeTextService {
   private vials = new BehaviorSubject(5); // Gère les fioles de soin du joueur
   currentVial = this.vials.asObservable();
 
-  private pvJoueur = new BehaviorSubject(100); //Gère les pv du joueur
+  private pvJoueur = new BehaviorSubject("100"); //Gère les pv du joueur
   currentPv = this.pvJoueur.asObservable();
 
   private bullets = new BehaviorSubject(5); //Gère les balles d'argent du joueur
@@ -103,18 +103,20 @@ export class ChangeTextService {
   }
 
   useHeal() {
-    if (this.pvJoueur.value < 50 && this.vials.value > 0) {
-      this.pvJoueur.next(this.pvJoueur.value + 50);
+    let pvNum : number = +this.pvJoueur.value;
+    if (pvNum < 50 && pvNum > 0) {
+      this.pvJoueur.next(`${pvNum + 50}`);
       this.vials.next(this.vials.value - 1);
     }
-    else if (this.pvJoueur.value > 50 && this.pvJoueur.value < 100 && this.vials.value > 0) {
-      this.pvJoueur.next(100);
+    else if (pvNum > 50 && pvNum < 100 && this.vials.value > 0) {
+      this.pvJoueur.next("100");
       this.vials.next(this.vials.value - 1);
     }
   }
 
   takeDamage(dmg: number) {
-    this.pvJoueur.next(this.pvJoueur.value - dmg);
+    let pvNum : number = +this.pvJoueur.value;
+    this.pvJoueur.next(`${pvNum-dmg}`);
   }
 
   useBullet() {
