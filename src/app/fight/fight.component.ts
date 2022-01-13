@@ -28,9 +28,7 @@ export class FightComponent implements OnInit {
   dealDamages() {
     this.service.currentAtk.subscribe(atk => {
       this.life = this.life - atk;
-      if (this.life <= 0) {
-        this.monster = null;
-      }
+      this.monsterDeath(this.life);
     });
     if (this.monster != null) {
       this.service.takeDamage(this.monster.atk);
@@ -51,10 +49,20 @@ export class FightComponent implements OnInit {
     }
   }
   useBullet() {
+    let fire : boolean;
+    fire = this.service.useBullet();
+    if(fire){
     this.life = this.life - 5;
-    this.service.useBullet();
-    if (this.life <= 0) {
-      this.monster = null;
+    }
+    this.monsterDeath(this.life);
+  }
+
+  monsterDeath(pv: number) {
+    if (this.monster) {
+      if (pv <= 0) {
+        this.service.changeEchos(this.monster.loots);
+        this.monster = null;
+      }
     }
   }
 }

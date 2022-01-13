@@ -68,6 +68,9 @@ export class ChangeTextService {
   private bullets = new BehaviorSubject(5); //Gère les balles d'argent du joueur
   currentBullets = this.bullets.asObservable();
 
+  private echos = new BehaviorSubject(10);
+  currentEchos = this.echos.asObservable();
+
   changeId(id: string) {
     this.idSource.next(id);
   }
@@ -99,9 +102,20 @@ export class ChangeTextService {
   }
 
   useBullet() {
+    let fire : boolean;
     if(this.bullets.value>0){
     this.bullets.next(this.bullets.value - 1);
+    fire= true;
+    return fire;
     }
+    else{
+      fire=false;
+      return fire;
+    }
+  }
+
+  changeEchos(gain : number){
+    this.echos.next(this.echos.value + gain);
   }
 
   LoadWeapons(): Observable<any> {
