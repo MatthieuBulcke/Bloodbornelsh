@@ -105,8 +105,7 @@ border:2px solid black;
 transition:.5s border,.5s color;
 }
 .choices p:hover{
-    color:goldenrod;
-    border:2px solid goldenrod;
+    animation:1s blink infinite;
 }
 .container{
     width: 100%;

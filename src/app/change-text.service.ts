@@ -38,8 +38,24 @@ export class ChangeTextService {
     //console.log(this.http.post<any>('https://localhost:7276/api/Users',user))
     return this.http.post<any>('https://localhost:7276/api/Users', user);
   }
-  InsertWeapon(id:any,inventory:any): Observable<any> {
+  InsertWeapon(id:number,inventory:any): Observable<any> {
     return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyInventory/${id}/${inventory}`);
+  }
+  UpdateLife(id:number,life:any): Observable<any> {
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyLife/${id}/${life}`);
+  }
+  UpdateStam(id:number,stam:any): Observable<any> {
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyStam/${id}/${stam}`);
+  }
+  UpdateTime(id:number,time:number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyTime/${id}/${time}`);
+  }
+  UpdateEchos(id:number,echos:number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyEchos/${id}/${echos}`);
+  }
+  UpdateWeapon(id:number,weaponId:number): Observable<any> {
+    //en vrai c'est le type de dégat mais du coup on va dire que c'est l'arme équipée
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyWeapon/${id}/${weaponId}`);
   }
   private idSource = new BehaviorSubject('2'); //Pour changer le main texte sur un clique d'option.
   currentId = this.idSource.asObservable();
