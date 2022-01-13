@@ -2,6 +2,9 @@
     width:10%;
     left:3em;
     top:2em;
+    color:white;
     position: absolute;
-    background:royalblue;
+    background:rgb(48, 62, 102);
+    border-radius: 2em;
+    text-align: center;
 }

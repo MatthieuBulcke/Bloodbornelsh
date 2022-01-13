@@ -66,10 +66,11 @@ padding:.1em;
 background-color: #4a4a4a;
 z-index:1;
 display: inline-block;
-border-radius: 2em; 
+border-radius: 2em;
 }
 ::-webkit-progress-value{
 background-color: goldenrod;
+transition:1s all;
 border-radius: 2em;
 }
 ::-webkit-progress-bar {
@@ -159,7 +160,7 @@ color:white;
     overflow: auto;
 }
 .articles .article{
-    width: 47.8%;
+    width: 30%;
     margin: 0.3em;
     text-align: center;
 }
@@ -168,7 +169,8 @@ padding:1em;
 border-radius:2em;
 background:#00000087;
 color:white;
-margin:1em 0;
+margin: auto;
+width: 50%;
 }
 .article img{
 width:70%;

@@ -28,16 +28,7 @@ export class FightComponent implements OnInit {
   dealDamages() {
     this.service.currentAtk.subscribe(atk => {
       this.life = this.life - atk;
-      if (this.life <= 0) {
-        let playerEchos = this.service.getUserProfile().subscribe(data => {
-          playerEchos = data.echos;
-          if (this.monster) {
-            console.log(+playerEchos + +this.monster.loots)
-            this.service.UpdateEchos(parseInt(localStorage.getItem('userId') as string), +playerEchos + +this.monster.loots).subscribe(data => console.log(data));
-            this.monster = null;
-          }
-        });
-      }
+      this.monsterDeath(this.life);
     });
     if (this.monster != null) {
       this.service.takeDamage(this.monster.atk);
@@ -52,7 +43,13 @@ export class FightComponent implements OnInit {
 
   }
   useHeal() {
-    this.service.useHeal();
+    this.service.getUserProfile().subscribe(data => {
+      let playerPotions = data.potions;
+      if (this.monster && playerPotions > 0) {
+        this.service.useHeal();
+        this.service.UpdatePotions(parseInt(localStorage.getItem('userId') as string), +playerPotions - 1).subscribe(data => console.log(data));
+      }
+    });
   }
 
   startFight(id: number) {
@@ -67,8 +64,29 @@ export class FightComponent implements OnInit {
   useBullet() {
     this.life = this.life - 5;
     this.service.useBullet();
-    if (this.life <= 0) {
-      this.monster = null;
+    this.monsterDeath(this.life);
+    let playerBullets = this.service.getUserProfile().subscribe(data => {
+      playerBullets = data.bullets;
+      if (this.monster) {
+        this.service.UpdateBullets(parseInt(localStorage.getItem('userId') as string), +playerBullets - 1).subscribe(data => console.log(data));
+      }
+    });
+  }
+  monsterDeath(pv: number) {
+    if (this.monster) {
+      if (pv <= 0) {
+        let lootToNum: number;
+        let lootsTab: string[] = this.monster.loots.split(',');
+        lootToNum = +lootsTab[0];
+        this.service.changeEchos(lootToNum);
+        let playerEchos = this.service.getUserProfile().subscribe(data => {
+          playerEchos = data.echos;
+          if (this.monster) {
+            this.service.UpdateEchos(parseInt(localStorage.getItem('userId') as string), +playerEchos + +this.monster.loots).subscribe(data => console.log(data));
+            this.monster = null;
+          }
+        });
+      }
     }
   }
 }

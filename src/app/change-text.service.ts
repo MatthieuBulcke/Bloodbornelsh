@@ -58,6 +58,12 @@ export class ChangeTextService {
     //en vrai c'est le type de dégat mais du coup on va dire que c'est l'arme équipée
     return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyWeapon/${id}/${weaponId}`);
   }
+  UpdatePotions(id:number,potions:number):Observable<any>{
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyPotions/${id}/${potions}`);
+  }
+  UpdateBullets(id:number,bullets:number):Observable<any>{
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyBullets/${id}/${bullets}`);
+  }
   private idSource = new BehaviorSubject('2'); //Pour changer le main texte sur un clique d'option.
   currentId = this.idSource.asObservable();
 
