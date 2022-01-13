@@ -23,8 +23,13 @@ export class ChangeTextService {
   constructor(private http: HttpClient) { }
 
   getUserProfile(): Observable<any> {
-    let id: string | null = localStorage.getItem('userId');
-    return this.http.get<any>(`https://localhost:7276/api/Profiles/${id}`);
+    let id: string = localStorage.getItem('userId') as string;
+    if(id!=null){
+      return this.http.get<any>(`https://localhost:7276/api/Profiles/${id}`);
+    }
+    else{
+      return this.http.get<any>(`https://localhost:7276/api/Profiles/1`);
+    }
   }
   LoadUsers(): Observable<any> {
     return this.http.get<any>('https://localhost:7276/api/Users');
@@ -109,7 +114,10 @@ export class ChangeTextService {
     return weapon;
   }
   getOption(idText: string): Observable<Option> {
-    let id: number = +idText;
+    let id: number = 2;
+    if(idText!=null){
+      id = +idText;
+    }
     let element = this.http.get<Option>(`https://localhost:7276/api/Stories/${id}`);
     return element;
   }

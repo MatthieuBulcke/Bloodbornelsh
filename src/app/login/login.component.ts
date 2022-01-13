@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
       let forms = document.getElementsByTagName("form");
       forms[0].classList.add('empty');
       forms[1].classList.add('empty');
-      this.router.navigateByUrl('');
     }
     else {
       let inputs = document.getElementsByTagName('input');
