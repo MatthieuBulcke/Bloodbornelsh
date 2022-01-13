@@ -13,15 +13,7 @@ export class LoginComponent implements OnInit {
   button: any;
   inscriptionButton: any;
   spans: any;
-  constructor(private authService: AuthService, private router: Router) {
-    //Si le localStorage est rempli, faire disparaitre le formulaire de connexion;
-    if (window.localStorage.getItem('isLoggedIn')) {
-      let forms = document.getElementsByTagName("form");
-      if(forms[0]){
-        forms[0].classList.add('empty');
-      }
-    }
-  }
+  constructor(private authService: AuthService, private router: Router) {  }
   ngOnInit(): void { }
   onLoggedin() {
     let user = new User();
@@ -75,19 +67,22 @@ export class LoginComponent implements OnInit {
     error.innerHTML = "";
   }
   ngAfterViewInit() {
-    this.button = (document.getElementsByTagName('button')[9]);
-    if(this.button){
-      this.button.addEventListener("click", this.onLoggedin.bind(this));
-    }
-    this.inscriptionButton = (document.getElementsByTagName('button')[10]);
-    if(this.inscriptionButton){
-      this.inscriptionButton.addEventListener("click", this.onSignIn.bind(this));
-    }
+    this.button = document.getElementsByTagName('button');
+    console.log(this.button)
+    this.button[6].addEventListener("click", this.onLoggedin.bind(this));
+    this.button[7].addEventListener("click", this.onSignIn.bind(this));
     this.spans = document.getElementsByTagName('span');
-    console.log(this.spans)
+    console.log(this.spans);
     this.spans[1].addEventListener('click', this.switchCase);
     this.spans[2].addEventListener('click', this.switchCase);
     //console.log(document.getElementsByTagName('button')[9]);
     //console.log(this.authService);
+    //Si le localStorage est rempli, faire disparaitre le formulaire de connexion;
+    if (window.localStorage.getItem('isLoggedIn')) {
+      let forms = document.getElementsByTagName("form");
+      if(forms[0]){
+        forms[0].classList.add('empty');
+      }
+    }
   };
 }
