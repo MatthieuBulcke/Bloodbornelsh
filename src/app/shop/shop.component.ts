@@ -13,9 +13,13 @@ export class ShopComponent implements OnInit {
   profile!: Profile;
   inventory: Weapon[] = [];
   echos!:number;
+  shop!: boolean;
   constructor(private changeText: ChangeTextService) { }
 
   ngOnInit(): void {
+    this.changeText.currentFight.subscribe(idShop=>{
+      this.initShop(idShop);
+    })
     this.changeText.getUserProfile().subscribe((profiles: Profile) => this.profile = profiles);
     this.changeText.LoadWeapons().subscribe((inventory: any) => { this.weapons = inventory; console.log(this.weapons) });
     this.changeText.getUserProfile().subscribe((profile: any) => {
@@ -30,7 +34,13 @@ export class ShopComponent implements OnInit {
     });
     this.changeText.currentEchos.subscribe((echos)=>this.echos=echos);
   }
-  initShop() {
+  initShop(id:number) {
+    if (id==1){
+      this.shop=true;
+    }
+    else{
+      this.shop=false;
+    }
 
   }
   addWeapon(weapon: Weapon): void {
