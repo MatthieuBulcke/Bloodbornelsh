@@ -48,7 +48,10 @@ export class ShopComponent implements OnInit {
     if (!alreadyOwned) {
       if(this.profile.echos>=weapon.price){
         this.changeText.changeEchos(-weapon.price);
-        this.changeText.UpdateEchos(parseInt(localStorage.getItem('userId') as string), +this.profile.echos - weapon.price).subscribe(data => console.log(data));
+        this.changeText.getUserProfile().subscribe((profiles: Profile) => {
+          this.changeText.UpdateEchos(parseInt(localStorage.getItem('userId') as string), profiles.echos - weapon.price).subscribe(data => console.log(data));
+          this.profile = profiles
+        });
         let weaponsString: string;
         this.inventory.push(weapon);
         weaponsTable.push(weapon.idWeapon);
