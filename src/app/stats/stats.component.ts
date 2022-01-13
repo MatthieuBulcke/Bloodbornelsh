@@ -40,18 +40,26 @@ export class StatsComponent implements OnInit {
     this.changeText.currentPv
       .subscribe(pv => this.pv = pv.toString());
     this.changeText.currentBullets
-    .subscribe(bul => this.balles=bul);
-
-    this.changeText.currentAtk.subscribe(atk => this.atk = atk);
+      .subscribe(bul => this.balles = bul);
+    this.changeText.currentEchos
+      .subscribe(echos => this.echos = echos);
+    this.changeText.currentAtk
+      .subscribe(atk => this.atk = atk);
+      
     this.changeText.getUserProfile().subscribe((profiles: Profile) => { this.profile = profiles; console.log(this.profile); this.initStats(); });
   }
 
   initStats(): void {
+    //Init du visuel
     this.pv = (this.profile.life).split('/')[0];
     this.stamina = (this.profile.stamina).split('/')[0];
     this.fioles = this.profile.potions;
     this.balles = this.profile.bullets;
     this.echos = this.profile.echos;
+
+    //Init dans les observables current
+    this.changeText.initStats(this.profile);
+
   }
 
   dmgTypeToText(dmg: number): string {

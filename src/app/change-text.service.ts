@@ -5,6 +5,7 @@ import { Option } from './option';
 import { Weapon } from './weapon';
 import { Monster } from './monster';
 import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
+import { Profile } from './model/profile.model';
 
 @Injectable({
   providedIn: 'root'
@@ -78,11 +79,25 @@ export class ChangeTextService {
   private vials = new BehaviorSubject(5); // Gère les fioles de soin du joueur
   currentVial = this.vials.asObservable();
 
-  private pvJoueur = new BehaviorSubject(100); //Gère les pv du joueur
+  private pvJoueur = new BehaviorSubject("100"); //Gère les pv du joueur
   currentPv = this.pvJoueur.asObservable();
 
   private bullets = new BehaviorSubject(5); //Gère les balles d'argent du joueur
   currentBullets = this.bullets.asObservable();
+
+  private echos = new BehaviorSubject(10); //Gère l'argent du joueur
+  currentEchos = this.echos.asObservable();
+
+  private stamina = new BehaviorSubject("100");
+  currentStam = this.stamina.asObservable();
+
+  initStats(profile : Profile){
+    this.pvJoueur.next(profile.life.split('/')[0]);
+    this.stamina.next(profile.stamina.split('/')[0]);
+    this.vials.next(profile.potions);
+    this.bullets.next(profile.bullets);
+    this.echos.next(profile.echos);
+  }
 
   changeId(id: string) {
     this.idSource.next(id);
@@ -100,24 +115,37 @@ export class ChangeTextService {
   }
 
   useHeal() {
-    if (this.pvJoueur.value < 50 && this.vials.value > 0) {
-      this.pvJoueur.next(this.pvJoueur.value + 50);
+    let pvNum : number = +this.pvJoueur.value;
+    if (pvNum < 50 && pvNum > 0) {
+      this.pvJoueur.next(`${pvNum + 50}`);
       this.vials.next(this.vials.value - 1);
     }
-    else if (this.pvJoueur.value > 50 && this.pvJoueur.value < 100 && this.vials.value > 0) {
-      this.pvJoueur.next(100);
+    else if (pvNum > 50 && pvNum < 100 && this.vials.value > 0) {
+      this.pvJoueur.next("100");
       this.vials.next(this.vials.value - 1);
     }
   }
 
   takeDamage(dmg: number) {
-    this.pvJoueur.next(this.pvJoueur.value - dmg);
+    let pvNum : number = +this.pvJoueur.value;
+    this.pvJoueur.next(`${pvNum-dmg}`);
   }
 
   useBullet() {
+    let fire : boolean;
     if(this.bullets.value>0){
     this.bullets.next(this.bullets.value - 1);
+    fire= true;
+    return fire;
     }
+    else{
+      fire=false;
+      return fire;
+    }
+  }
+
+  changeEchos(gain : number){
+    this.echos.next(this.echos.value + gain);
   }
 
   LoadWeapons(): Observable<any> {
