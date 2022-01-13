@@ -22,9 +22,11 @@ export class WeaponsComponent implements OnInit {
     this.service.getUserProfile().subscribe((profile: any) => {
       this.profile = profile;
       this.profile.inventory = profile.inventory.split(','); console.log(this.profile);
-      for (let i = 0; i < this.profile.inventory.length; i++) {
-        this.service.LoadWeapon(profile.inventory[i])
-          .subscribe((weapon: Weapon) => this.inventory.push(weapon));
+      if (this.profile.inventory != "") {
+        for (let i = 0; i < this.profile.inventory.length; i++) {
+          this.service.LoadWeapon(profile.inventory[i])
+            .subscribe((weapon: Weapon) => this.inventory.push(weapon));
+        }
       }
     });
     //this.service.LoadWeapons().subscribe((inventory:any) => this.inventory = inventory);

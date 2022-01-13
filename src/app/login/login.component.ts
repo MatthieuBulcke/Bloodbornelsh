@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
     this.button = document.getElementsByClassName('connect');
     this.inscriptionButton = document.getElementsByClassName('signIn');
     console.log(this.button)
+    console.log(this.inscriptionButton)
     if(this.button[0]){
       this.button[0].addEventListener("click", this.onLoggedin.bind(this));
     }
