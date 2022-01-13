@@ -138,7 +138,12 @@ export class ChangeTextService {
       this.vials.next(this.vials.value - 1);
     }
   }
-
+  addHeal(){
+    this.vials.next(this.vials.value + 1);
+  }
+  addBullet(){
+    this.bullets.next(this.bullets.value + 1);
+  }
   takeDamage(dmg: number) {
     let pvNum : number = +this.pvJoueur.value;
     this.pvJoueur.next(`${pvNum-dmg}`);
