@@ -70,9 +70,15 @@ export class WeaponsComponent implements OnInit {
   }
 
   addWeaponToInventory(id: number){
+    this.service.currentId
+    .subscribe(id => {
+      if(id=='2'){
+        this.inventory=[];
+      }
+    })
     this.service.LoadWeapon(id)
       .subscribe(weapon =>{
-        this.inventory.push(weapon);
+        this.addWeapon(weapon);
         if (this.inventory.length==1){
           this.selectWeapon(this.inventory[0]);
         }
