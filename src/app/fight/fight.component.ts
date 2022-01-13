@@ -72,6 +72,7 @@ export class FightComponent implements OnInit {
       }
     });
   }
+  /*****Fonction qui vérifie si le monstre est mort, ajoute son loot aux stats et le supprime *****/
   monsterDeath(pv: number) {
     if (this.monster) {
       if (pv <= 0) {

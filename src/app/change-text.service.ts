@@ -97,6 +97,13 @@ export class ChangeTextService {
   private stamina = new BehaviorSubject("100");
   currentStam = this.stamina.asObservable();
 
+  private weaponToAdd = new BehaviorSubject(0);
+  currentWeaponToAdd= this.weaponToAdd.asObservable();
+
+  addWeaponToIventory(id: number){
+    this.weaponToAdd.next(id);
+  }
+
   initStats(profile : Profile){
     this.pvJoueur.next(profile.life.split('/')[0]);
     this.stamina.next(profile.stamina.split('/')[0]);
@@ -158,8 +165,8 @@ export class ChangeTextService {
     let weapons = this.http.get<Weapon>(`https://localhost:7276/api/Weapons`)
     return weapons;
   }
-  LoadWeapon(id:number): Observable<any> {
-    let weapon = this.http.get<Weapon>(`https://localhost:7276/api/Weapons/${id}`)
+  LoadWeapon(id:number): Observable<Weapon> {
+    let weapon = this.http.get<Weapon>(`https://localhost:7276/api/Weapons/${id}`);
     //console.log(weapon);
     return weapon;
   }
