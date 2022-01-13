@@ -88,8 +88,12 @@ export class ChangeTextService {
   private echos = new BehaviorSubject(10); //Gère l'argent du joueur
   currentEchos = this.echos.asObservable();
 
+  private stamina = new BehaviorSubject("100");
+  currentStam = this.stamina.asObservable();
+
   initStats(profile : Profile){
     this.pvJoueur.next(profile.life.split('/')[0]);
+    this.stamina.next(profile.stamina.split('/')[0]);
     this.vials.next(profile.potions);
     this.bullets.next(profile.bullets);
     this.echos.next(profile.echos);
