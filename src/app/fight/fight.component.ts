@@ -29,16 +29,23 @@ export class FightComponent implements OnInit {
     this.service.currentAtk.subscribe(atk => {
       this.life = this.life - atk;
       if (this.life <= 0) {
-        this.monster = null;
+        let playerEchos = this.service.getUserProfile().subscribe(data => {
+          playerEchos = data.echos;
+          if (this.monster) {
+            console.log(+playerEchos + +this.monster.loots)
+            this.service.UpdateEchos(parseInt(localStorage.getItem('userId') as string), +playerEchos + +this.monster.loots).subscribe(data => console.log(data));
+            this.monster = null;
+          }
+        });
       }
     });
     if (this.monster != null) {
       this.service.takeDamage(this.monster.atk);
       let playerLife = this.service.getUserProfile().subscribe(data => {
-        playerLife = data.life.split('/')[0];console.log(data.life.split('/')[0])
+        playerLife = data.life.split('/')[0]; console.log(data.life.split('/')[0])
         //Si le monstre existe, applique ses dégats au joueur
-        if(this.monster){
-          this.service.UpdateLife(parseInt(localStorage.getItem('userId') as string),+playerLife - this.monster.atk).subscribe(data => console.log(data));
+        if (this.monster) {
+          this.service.UpdateLife(parseInt(localStorage.getItem('userId') as string), +playerLife - this.monster.atk).subscribe(data => console.log(data));
         }
       });
     }
