@@ -31,7 +31,11 @@ export class WeaponsComponent implements OnInit {
     });
     //this.service.LoadWeapons().subscribe((inventory:any) => this.inventory = inventory);
   }
-
+  //TEST FONCTION UPDATES
+  updateLife():void{
+    this.service.UpdateLife(parseInt(localStorage.getItem('userId') as string),'5').subscribe(data => console.log(data));
+  }
+  //FIN DE TESTS
   addWeapon(weapon: Weapon): void {
     let weaponsTable: any[] = [];
     let weaponsString: any;
@@ -43,6 +47,7 @@ export class WeaponsComponent implements OnInit {
         alreadyOwned = true;
       }
     });
+    //Si le joueur ne possède pas l'arme, lui ajoute //TODO ADD PAY
     if (!alreadyOwned) {
       let weaponsString: string;
       this.inventory.push(weapon);
