@@ -34,6 +34,13 @@ export class FightComponent implements OnInit {
     });
     if (this.monster != null) {
       this.service.takeDamage(this.monster.atk);
+      let playerLife = this.service.getUserProfile().subscribe(data => {
+        playerLife = data.life.split('/')[0];console.log(data.life.split('/')[0])
+        //Si le monstre existe, applique ses dégats au joueur
+        if(this.monster){
+          this.service.UpdateLife(parseInt(localStorage.getItem('userId') as string),+playerLife - this.monster.atk).subscribe(data => console.log(data));
+        }
+      });
     }
 
   }
