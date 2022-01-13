@@ -36,14 +36,32 @@ export class WeaponsComponent implements OnInit {
     //this.service.LoadWeapons().subscribe((inventory:any) => this.inventory = inventory);
   }
   //TEST FONCTION UPDATES
+  //Fonction Update vie(id utilisateur, valeur de vie -> varchar)
   updateLife():void{
     this.service.UpdateLife(parseInt(localStorage.getItem('userId') as string),'5').subscribe(data => console.log(data));
   }
+  //Fonction Update stam(id utilisateur, valeur de stamina -> varchar)
+  updateStam():void{
+    this.service.UpdateStam(parseInt(localStorage.getItem('userId') as string),'5').subscribe(data => console.log(data));
+  }
+  //Fonction Update Time(id utilisateur, Temps -> int)
+  updateTime():void{
+    this.service.UpdateTime(parseInt(localStorage.getItem('userId') as string),2).subscribe(data => console.log(data));
+  }
+  //Fonction Update echos(id utilisateur, echos('TOTAL') -> int)
+  updateEchos():void{
+    this.service.UpdateEchos(parseInt(localStorage.getItem('userId') as string),150).subscribe(data => console.log(data));
+  }
+  //Fonction Update weapon(id utilisateur, id de l'arme a équiper -> int)
+  updateWeapon():void{
+    this.service.UpdateWeapon(parseInt(localStorage.getItem('userId') as string),1).subscribe(data => console.log(data));
+  }
   //FIN DE TESTS
+  //fonction ajout d'arme dans l'inventaire
   addWeapon(weapon: Weapon): void {
     let weaponsTable: any[] = [];
-    let weaponsString: any;
     let alreadyOwned: boolean = false;
+    //pour chaque élément dans l'inventaire, vérifie si le joueur possède déja l'arme
     this.inventory.forEach(element => {
       weaponsTable.push(element.idWeapon);
       if (element.idWeapon == weapon.idWeapon) {

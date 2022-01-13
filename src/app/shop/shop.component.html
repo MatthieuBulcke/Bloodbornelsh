@@ -1,9 +1,9 @@
 <article>
-    <div class="shop empty">
+    <div class="shop">
         <span class="pognon">
             <figure>
                 <img class="icon" src="../assets/img/Echo.png">
-                <figcaption class="echos">Echos</figcaption>
+                <figcaption class="echos">Echos {{this.profile.echos}}</figcaption>
             </figure>
         </span>
         <figure>
@@ -21,22 +21,12 @@
                 <figcaption class="bullets">Balles</figcaption>
                 <button class="buy second">Acheter</button>
             </figure>
-            <figure class="article">
-                <img class="icon" src="../assets/img/weapons/hunter_axe.jpg">
-                <figcaption class="weapon">hunter_axe</figcaption>
-                <button class="buy third">Acheter</button>
+            <figure class="article" *ngFor="let weapon of weapons">
+                <img class="weapon" src="../assets/img/weapons/{{weapon.imgSrc}}.jpg"/>
+                <figcaption>{{weapon.name}}</figcaption>
+                <button (click)="addWeapon(weapon)">Acheter</button>
             </figure>
-            <figure class="article">
-                <img class="icon" src="../assets/img/weapons/saw_cleaver.jpg">
-                <figcaption class="weapon">saw_cleaver</figcaption>
-                <button class="buy fourth">Acheter</button>
-            </figure>
-            <figure class="article">
-                <img class="icon" src="../assets/img/weapons/tonitrus.jpg">
-                <figcaption class="weapon">tonitrus</figcaption>
-                <button class="buy fifth">Acheter</button>
-            </figure>
-            <button class="exit">Continuer votre route</button>
+            <button (click)="hideShop()" class="exit">Continuer votre route</button>
         </div>
     </div>
 </article>
