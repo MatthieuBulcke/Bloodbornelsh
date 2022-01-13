@@ -153,6 +153,7 @@ export class ChangeTextService {
 
   changeEchos(gain : number){
     this.echos.next(this.echos.value + gain);
+    // this.UpdateEchos(localStorage.getItem("idUser"),this.echos.value);
   }
 
   LoadWeapons(): Observable<any> {

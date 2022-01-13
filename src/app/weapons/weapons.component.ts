@@ -14,7 +14,7 @@ export class WeaponsComponent implements OnInit {
   inventory: Weapon[] = [];
   weapons!: Weapon[];
   equipedWeapon!: Weapon;
-
+  weaponImg=document.getElementsByClassName("weaponImg");
 
   constructor(private service: ChangeTextService) { }
 
@@ -67,6 +67,7 @@ export class WeaponsComponent implements OnInit {
     this.equipedWeapon = weapon;
     console.log(weapon.dmgType);
     this.service.changeWeapon(weapon);
+    // this.weaponImg[id].classList.add("active");
   }
 
   addWeaponToInventory(id: number){
