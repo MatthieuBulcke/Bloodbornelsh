@@ -60,7 +60,10 @@ export class FightComponent implements OnInit {
   monsterDeath(pv: number) {
     if (this.monster) {
       if (pv <= 0) {
-        this.service.changeEchos(this.monster.loots);
+        let lootToNum: number;
+        let lootsTab : string[]=this.monster.loots.split(',');
+        lootToNum=+lootsTab[0];
+        this.service.changeEchos(lootToNum);
         this.monster = null;
       }
     }

@@ -5,6 +5,6 @@ export interface Monster{
     atk: number;
     def:number;
     weakness: number;
-    loots: number;
+    loots: string;
     imgMonster: string;
 }
