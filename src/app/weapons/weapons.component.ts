@@ -20,7 +20,8 @@ export class WeaponsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getUserProfile().subscribe((profile: any) => {
-      this.profile = profile; console.log(this.profile)
+      this.profile = profile;
+      this.profile.inventory = profile.inventory.split(','); console.log(this.profile);
       for (let i = 0; i < this.profile.inventory.length; i++) {
         this.service.LoadWeapon(profile.inventory[i])
           .subscribe((weapon: Weapon) => this.inventory.push(weapon));
