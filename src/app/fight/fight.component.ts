@@ -29,21 +29,23 @@ export class FightComponent implements OnInit {
     this.service.currentAtk.subscribe(atk => {
       this.life = this.life - atk;
       this.monsterDeath(this.life);
+      if (this.monster != null) {
+        let playerLife = this.service.getUserProfile().subscribe(data => {
+          playerLife = data.life.split('/')[0]; console.log(data.life.split('/')[0])
+          //Si le monstre existe, applique ses dégats au joueur
+          if (this.monster && this.life > 0) {
+            this.service.takeDamage(this.monster.atk);
+            console.log(this.life+' '+(this.life-atk))
+            this.service.UpdateLife(parseInt(localStorage.getItem('userId') as string), +playerLife - this.monster.atk).subscribe(data => console.log(data));
+            console.log(+playerLife - this.monster.atk);
+          }
+          if (this.monster && (+playerLife - this.monster.atk) <= 0) {
+            this.service.ResetUser(localStorage.getItem('userId')).subscribe(data => console.log(data));
+            document.location.href = "/";
+          }
+        });
+      }
     });
-    if (this.monster != null) {
-      this.service.takeDamage(this.monster.atk);
-      let playerLife = this.service.getUserProfile().subscribe(data => {
-        if(this.monster!=null && this.monster.atk>=data.life){
-          this.service.ResetUser(localStorage.getItem('userId')).subscribe(data => console.log(data));
-          document.location.href="/";
-        }
-        playerLife = data.life.split('/')[0]; console.log(data.life.split('/')[0])
-        //Si le monstre existe, applique ses dégats au joueur
-        if (this.monster) {
-          this.service.UpdateLife(parseInt(localStorage.getItem('userId') as string), +playerLife - this.monster.atk).subscribe(data => console.log(data));
-        }
-      });
-    }
   }
   useHeal() {
     this.service.getUserProfile().subscribe(data => {
@@ -56,7 +58,7 @@ export class FightComponent implements OnInit {
   }
 
   startFight(id: number) {
-    if (id != 0 && id!=1) {
+    if (id != 0 && id != 1) {
       this.service.getMonster(id)
         .subscribe(monster => {
           this.monster = monster;
