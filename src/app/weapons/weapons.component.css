@@ -16,7 +16,7 @@ figure{
 }
 figure img{
     border:2px solid grey;
-    width:100%;
+    width: 40%;
 }
 figure:hover img{
     color:goldenrod;

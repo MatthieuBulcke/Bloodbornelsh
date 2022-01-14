@@ -64,6 +64,9 @@ export class ChangeTextService {
   UpdateBullets(id: number, bullets: number): Observable<any> {
     return this.http.get<any>(`https://localhost:7276/api/Profiles/ModifyBullets/${id}/${bullets}`);
   }
+  ResetUser(id: any): Observable<any> {
+    return this.http.get<any>(`https://localhost:7276/api/Profiles/ResetUser/${id}`);
+  }
   private idSource = new BehaviorSubject('2'); //Pour changer le main texte sur un clique d'option.
   currentId = this.idSource.asObservable();
 

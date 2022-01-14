@@ -33,6 +33,10 @@ export class FightComponent implements OnInit {
     if (this.monster != null) {
       this.service.takeDamage(this.monster.atk);
       let playerLife = this.service.getUserProfile().subscribe(data => {
+        if(this.monster!=null && this.monster.atk>=data.life){
+          this.service.ResetUser(localStorage.getItem('userId')).subscribe(data => console.log(data));
+          document.location.href="/";
+        }
         playerLife = data.life.split('/')[0]; console.log(data.life.split('/')[0])
         //Si le monstre existe, applique ses dégats au joueur
         if (this.monster) {
@@ -40,7 +44,6 @@ export class FightComponent implements OnInit {
         }
       });
     }
-
   }
   useHeal() {
     this.service.getUserProfile().subscribe(data => {
